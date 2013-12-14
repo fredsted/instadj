@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^(www\.)?instadj\.com$ [NC]
+RewriteRule ^(.*) http://instadj.com/$1 [R=301,NE,L]
+
+RewriteCond %{QUERY_STRING} !marker
+RewriteCond %{QUERY_STRING} id=([-a-zA-Z0-9_+]+)
+RewriteRule ^/?index\.php$ %1? [R=301,L]
+RewriteRule ^/?([-a-zA-Z0-9_+]+)$ index.php?marker&id=$1 [L]
+</IfModule>
+
+
+
+
+
+
+
+

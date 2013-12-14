@@ -1,0 +1,360 @@
+		body {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			height: 100%;
+			overflow: hidden;
+			margin-top: 10px;
+			
+		}
+
+/* ####### MAIN */
+		
+		#main {
+			margin: 0px auto;
+			height: 100%;
+			font-size: 13px;
+			
+		}
+		
+/* ####### SEARCH, SHARING */
+		
+		#controls { 
+			height: 30px;
+			width: 475px;
+			position: relative;
+			top: 250px;
+			margin: 0px auto;			
+		} 
+
+		#drpdownSearchMenu {
+
+		}
+		#txtSearch {
+			width: 330px;
+      		float:left; 
+      		margin-right: 5px;      		
+      	}
+      	
+      	#txtSearch.loading {
+			background: url(miniloader.gif);
+			background-repeat: no-repeat;
+			background-position-x: 195px;
+			background-position-y: 5px;
+		}
+		
+		#smallogo {
+			float:left; 
+			margin-right: 10px;
+		}
+		
+		#btnGenerate {
+			float: right; 
+			position: relative;
+			margin-top: 2px;
+		}
+		
+		#playlistcode {
+			float: left;
+			position: relative;
+			width: 155px;
+			text-align: center;
+			cursor: text;
+			margin-left: 5px;
+			font-size: 12px;
+			padding-left: 0;
+			padding-right: 0;
+			margin-top: 2px;
+			font-weight: bold;
+			margin-bottom: 0;
+		}
+				
+		#sharingoptions div {
+			float:left;
+		}
+		
+		#intro  {
+			top: 50px;
+			position: absolute;
+			text-align: center;
+			width: 100%;
+		}
+		
+		#settings{
+			position: absolute;
+			right: 10px;
+			display: none;
+			color: white;
+			text-align: right;
+		} 
+		
+/* ####### BLOCKS */
+		#player {
+			/* "Click to play" text */
+			text-align: center;
+			line-height: 250px;
+			color: #DDD;
+			font-weight: bolder;
+			font-size: 24px;
+			
+			
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			height: 220px;
+			width: 390px;
+			margin-bottom: 5px;
+		}
+
+		#playlistcontrols {
+			position: absolute;
+			top: 240px;
+			left: 10px;
+			height: 30px;
+			width: 380px;
+			margin: 0 auto;
+		}
+		
+		#playlist {
+			overflow-y: auto;
+			overflow-x: hidden;
+			padding: 5px;
+			width: 380px;
+			
+			position: absolute;
+			top: 280px;
+			left: 10px;
+			bottom: 50px;
+			
+			margin: 0;
+		}
+		
+		#playlistcontent { 
+			list-style-type: none; 
+			margin: 0; 
+			padding: 0;  
+		}
+		
+		#playlistcontent li {  
+			height: 18px; 
+		}
+		
+     	#playlistcontent li a {
+      		color: #000;
+      	}
+      	
+       	#playlistcontent li.active a {
+      		color: #FFF;
+			text-overflow: ellipsis;
+      	}
+      	
+      	#playlistcontent li a {
+	      	overflow: hidden;
+	      	white-space: nowrap;
+	      	float:left;
+	      	width:325px;
+	      	height: 14px;
+	      	text-overflow: ellipsis;
+	      	font-size: 13px;
+	      	padding: 4px;
+      	}
+      	
+      	.playlistremove {
+      		float:right;
+      		margin-top: 3px;
+      	}
+      	
+      	#share {
+      		position: absolute;
+      		bottom: 10px;
+      		width: 390px;
+      		left: 10px;      		
+      	}
+
+      	#sharethisbuttons {
+      		height: 30px;
+      	}
+      	
+      	#recent {
+      		
+      		position: relative;
+      		margin: 0 auto;
+      		top: 320px;
+      		width: 250px;
+      		text-align: center;
+      	}
+      	
+      	#recent h3 {
+      		
+      		margin-bottom: 5px;
+      	}
+      	
+
+      	
+      	a.recent {
+	     line-height: 25px;
+	     font-size: 14px;
+      	}
+
+/* ####### GRID */
+
+		#grid {
+			font-size: 13px;
+			overflow-y: auto;
+			position: absolute;
+			top: 50px;
+			left: 415px;
+			bottom: 10px;
+			right: 10px;
+			display: none;
+		}
+		
+		#grid .video {
+			margin: 0 10px 10px 0;
+			width: 120px;
+			height: 90px;
+			float: left;
+			position: relative;
+			cursor: pointer;	
+			background-size: 120px 90px;	
+			box-shadow: 2px 4px 7px #CCC;	
+		}
+		
+		.videolist {
+			width: 250px!important;
+			background-repeat: no-repeat !important;
+			background: #f1f1f1;
+			
+		}
+		
+		.hd {
+			background:#FF0000;position:absolute;bottom: 5px;right: 5px;font-size:9px;color:white;height:9px;line-height:9px;padding:2px;
+			border-radius: 2px;
+			opacity: 0.7;
+		}
+		
+		.videolist .hd {
+			bottom: 15px;
+		}
+		
+		
+		.videolist .title {
+			left: 123px!important;
+			width: 122px;
+			top: 3px;
+			padding-top: 0px;
+			background: none;
+			font-size: 12px !important;
+			height: 75px;
+			text-overflow:ellipsis;
+			overflow: hidden;
+			border: none;
+			
+		}
+		
+		.videolist .videoinfo {
+			position: absolute;
+			right: 5px;
+			font-size: 10px;
+			display: block!important;
+			text-align: right;
+			line-height: 10px;
+			bottom: 3px;
+		}
+		
+		#gridoptions {
+			position: absolute;
+			right: 5%;
+			top: 325px;
+			padding-left: 20px;
+		}
+	
+		.title {
+			position: relative;
+			top: 5px;
+			background: white;
+			font-weight: bold;
+			float:left;
+			font-size: 11px;
+			padding: 3px;
+			line-height: 16px;
+
+		}
+		
+		.video a:hover {
+			text-decoration: none;
+			color: #000;
+		}		
+		
+		.loadmore {
+			margin-bottom: 7px;
+			padding-right: 7px;
+			width: 120px;
+			float: left;
+		}
+		.loadmore img {
+			margin-left: 31px;
+			margin-top: 15px;
+		}
+		
+		.dropdown-menu label {
+        	display: inline;
+      	}      
+      	
+      	.related {
+      		position: absolute;
+			padding-left: 3px;
+			padding-right: 3px;
+			
+			bottom:5px;
+			left: 0;
+			font-size: 10px; 
+			    		
+      	}
+      	
+      	.related a {
+      		
+      		color: #000;
+      	}
+      	
+      	.related a:hover {
+			
+      	}
+      	
+      	.title, .related {
+			color: #000;
+			border-top: 1px solid #CCC;
+			border-bottom: 1px solid #CCC;
+			border-right: 1px solid #CCC;
+			text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);      		
+      	}
+      
+      	.title, .related, .videolist {
+			background-color: #EEE;
+			background-repeat: repeat-x;
+			background-image: -moz-linear-gradient(top, whiteSmoke 0%, #EEE 100%);
+			background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,whiteSmoke), color-stop(100%,#EEE));
+			background-image: -webkit-linear-gradient(top, whiteSmoke 0%,#EEE 100%);
+			background-image: -ms-linear-gradient(top, whiteSmoke 0%,#EEE 100%);
+			background-image: -o-linear-gradient(top, whiteSmoke 0%,#EEE 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='whiteSmoke', endColorstr='#EEE',GradientType=0 );      
+      	}
+ /* ####### MISC */
+
+      	ul.nav {
+      		margin: 0;
+      	}
+      	
+		
+		.stButton { !important;
+			margin-right: 3px;            
+			margin-left: 0px;            
+			margin-bottom: 0px;            
+			margin-top: 0px;            
+			padding: 0 !important;
+		}
+		
+		.stButton .chicklets {
+			padding-right: 0!important;
+			padding-left: 16px !important;
+		}
+		
+

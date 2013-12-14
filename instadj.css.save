@@ -1,0 +1,274 @@
+		body {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			height: 100%;
+			overflow: hidden;
+			margin-top: 10px;
+			
+		}
+
+/* ####### MAIN */
+		
+		#main {
+			margin: 0px auto;
+			height: 100%;
+			font-size: 13px;
+			
+		}
+		
+/* ####### SEARCH, SHARING */
+		
+		#controls { 
+			height: 28px;
+			width: 475px;
+			position: relative;
+			top: 250px;
+			margin: 0px auto;			
+		} 
+		
+		#txtSearch {
+			width: 345px;
+		}
+		
+      	#txtSearch {
+      		float:left; margin-right: 5px;      		
+      	}
+      	
+      	#txtSearch.loading {
+			background: url(miniloader.gif);
+			background-repeat: no-repeat;
+			background-position-x: 190px;
+			background-position-y: 5px;
+			padding-right: 30px;
+			width: 177px !important;
+		}
+		
+		#btnGenerate {
+			float: right; 
+			position:relative;
+			margin-left:10px;
+		}
+		
+		#playlistcode {
+			float: left; 
+			position:relative; 
+			width: 95px;
+			text-align:center;
+			cursor:default;
+			margin-left: 5px;
+		}
+		
+		
+		
+		#sharingoptions div {
+			float:left;
+		}
+		
+		#sharethisbuttons {
+			margin-top: 3px;
+		}
+		
+		#intro  {
+			top: 50px;
+			position: absolute;
+			text-align: center;
+			width: 100%;
+		}
+		
+		#settings{
+			position: absolute;
+			right: 10px;
+			display: none;
+			color: white;
+			text-align: right;
+		} 
+		
+/* ####### BLOCKS */
+		#player {
+			/* "Click to play" text */
+			text-align: center;
+			line-height: 250px;
+			color: #DDD;
+			font-weight: bolder;
+			font-size: 24px;
+			
+			height: 250px;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 390px;
+			margin-bottom: 5px;
+		}
+		
+		#playlist {
+			overflow-y: scroll;
+			overflow-x: hidden;
+			padding: 5px;
+			width: 380px;
+			position: absolute;
+			top: 310px;
+			left: 10px;
+			bottom: 0;
+			margin-bottom: 5px;
+		}
+		
+		#playlistcontent { 
+			list-style-type: none; 
+			margin: 0; 
+			padding: 0;  
+		}
+		
+		#playlistcontent li {  
+			height: 18px; 
+		}
+		
+     	#playlistcontent li a {
+      		color: #000;
+      	}
+      	
+       	#playlistcontent li.active a {
+      		color: #FFF;
+			text-overflow: ellipsis;
+      	}
+      	
+      	#playlistcontent li a {
+	      	overflow: hidden;
+	      	white-space: nowrap;
+	      	float:left;
+	      	width:325px;
+	      	text-overflow: ellipsis;
+	      	font-size: 12px;
+	      	padding: 4px;
+      	}
+      	
+      	.playlistremove {
+      		float:right;
+      		margin-top: 3px;
+      	}
+      	
+      	#share {
+      		position: absolute;
+      		top: 270px;
+      		width: 390px;
+      		left: 10px;      		
+      	}
+
+/* ####### GRID */
+
+		#grid {
+			font-size: 13px;
+			overflow-y: auto;
+			position: absolute;
+			top: 50px;
+			left: 415px;
+			bottom: 10px;
+			right: 10px;
+			display: none;
+		}
+		
+		#grid .video {
+			margin: 0 10px 10px 0;
+			width: 120px;
+			height: 90px;
+			float: left;
+			position: relative;
+			cursor: pointer;			
+		}
+		
+		.videolist {
+			width: 250px!important;
+			background-repeat: no-repeat !important;
+			
+		}
+		
+		.videolist:hover, .videolist .title:hover {
+			
+			background-color: #EEE !important;
+			color: #0088CC!important;
+		}
+		
+		
+		.videolist .title {
+			left: 130px!important;
+			width: 100px;
+			top: 0px;
+			padding-top: 0px;
+			background: none;
+			font-size: 13px !important;
+		}
+		
+		.videolist .videoinfo {
+			position: absolute;
+			right: 3px;
+			font-size: 10px;
+			display: block!important;
+			text-align: right;
+			line-height: 10px;
+			bottom: 3px;
+		}
+		
+		#gridoptions {
+			position: absolute;
+			right: 5%;
+			top: 325px;
+			padding-left: 20px;
+		}
+	
+		.title {
+			position: relative;
+			top: 5px;
+			background: white;
+			font-weight: bold;
+			float:left;
+			padding: 3px;
+			font-size: 11px;
+			padding: 3px 3px 3px 0;
+			line-height: 16px;
+			color: #000;
+		}
+		
+		.video a:hover {
+			text-decoration: none;
+		}
+		
+		.title:hover {
+			background:rgba(255, 255, 255, 0.8);
+			color: #0088CC;
+		}
+		
+		
+		.loadmore {
+			margin-bottom: 7px;
+			padding-right: 7px;
+			width: 120px;
+			float: left;
+		}
+		.loadmore img {
+			margin-left: 31px;
+			margin-top: 15px;
+		}
+		
+		.dropdown-menu label {
+        	display: inline;
+      	}      
+      	
+      
+ /* ####### MISC */
+
+      	ul.nav {
+      		margin: 0;
+      	}
+      	
+		
+		.stButton { !important;
+			margin-right: 3px;            
+			margin-left: 0px;            
+			margin-bottom: 0px;            
+			margin-top: 0px;            
+			padding: 0 !important;
+		}
+		
+		.stButton .chicklets {
+			padding-right: 0!important;
+		}
+		
+
