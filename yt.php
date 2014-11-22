@@ -113,7 +113,7 @@ ini_set( 'display_errors','0');
 <div class="video$class" style="background-image:url($thumb);">
 	<a href="$url" class="title"> $title</a>
 	$hd
-	<span class="videoinfo" style="display:none;">$views views</span> 
+	<span class="videoinfo">$views views</span> 
 	<span class="related" style="display:none;"><a href="#" data-href="yt.php?action=related&id=$id">Related</a></span>
 </div>
 HTML;

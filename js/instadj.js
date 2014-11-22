@@ -44,6 +44,8 @@
 		//	$("#recent").html(data);
 		//});
 		
+
+		
 		$('#recent').on("click", "a", function(event){
 			$('#txtSearch').attr("value", $(this).attr('data-href') );
 			$('#btnSearch').click();
@@ -67,6 +69,7 @@
 			'indierock',
 			'jazz',
 			'hiphopheads',
+			'chillmusic',
 			'classicalmusic',
 			'trance',
 			'dnb',
@@ -206,7 +209,35 @@
 				 return false;
 			}
 		});
-			
+		
+		$("#txtSearch").typeahead({
+	        source: function(request, response) {
+	            $.getJSON("http://suggestqueries.google.com/complete/search?callback=?",
+	                {
+	                  "hl":"en", // Language
+	                  "ds":"yt", // Restrict lookup to youtube
+	                  "jsonp":"suggestCallBack", // jsonp callback function name
+	                  "q":request, // query term
+	                  "client":"youtube" // force youtube style response, i.e. jsonp
+	                }
+	            );
+	            suggestCallBack = function (data) {
+	                var suggestions = [];
+	                $.each(data[1], function(key, val) {
+	                    suggestions.push(val[0]);
+	                });
+	                response(suggestions);
+	            };
+	        },
+	        minLength: 2,
+	        items: 10,
+		});		
+
+
+		$('#txtSearch').click(function(){
+			$(this).select();
+		});
+		
 		$("#btnRelated").click(function(){
 			$.ajax({
 			  url: 'yt.php?action=related&id='+currentID,
@@ -216,11 +247,7 @@
 			    $("#txtSearch").removeClass("loading");
 			  }
 			});
-		});
-			
-		$('#txtSearch').click(function(){
-			$(this).select();
-		});
+		});		
 
 		$('#pauseplay').click(function(){
 			if (currentState == 1) {
@@ -365,6 +392,21 @@
 		} else {
 			listview = false;
 		}
+	});
+	
+	var isDark = false;
+	
+	$(document).on("click", "#togglelight", function(event){
+		$(".logo-sm, .logo-sm-dark").toggle();
+		if ($("body").hasClass("isDark")) {
+				$("#smallogo").attr("src", "instadj.png");
+				$('link#darkTheme').remove();
+				$("body").removeClass("isDark");
+		} else {
+				$("body").addClass("isDark");
+				$("#smallogo").attr("src", "instadj.dark.png");
+				$('head').append('<link id="darkTheme" rel="stylesheet" type="text/css" href="http://instadj.com/bootstrap/css/bootstrap.dark.css">');
+		}	
 	});
 				
 		
