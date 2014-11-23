@@ -113,14 +113,21 @@ ini_set( 'display_errors','0');
 <div class="video$class" style="background-image:url($thumb);">
 	<a href="$url" class="title"> $title</a>
 	$hd
-	<span class="videoinfo">$views views</span> 
+	<span class="videoinfo">$views views</span>
+	<span class="playoverlay">&nbsp;</span>
 	<span class="related" style="display:none;"><a href="#" data-href="yt.php?action=related&id=$id">Related</a></span>
 </div>
 HTML;
 	    
 }	 // <a href="#" class="btn btn-mini addtoplaylist"><i class="icon icon-plus"></i></a>
 	    
-    echo '<div class="loadmore"><a href="yt.php?action='.qs('action').'&q='.qs('q').'&user='.qs('user').'&id='.qs('id').'&feed='.qs('feed').'"><img class="loadmoreimg" src="more.png" width="62" height="62" /></a></div>';
+    echo "<div class=\"loadmore\">
+			<a href=\"yt.php?action=".qs('action')
+	         .'&q='.qs('q').'&user='.qs('user').'&id='.qs('id')
+	         .'&feed='.qs('feed')."\">
+                <img class=\"loadmoreimg\" src=\"more.png\" width=\"62\" height=\"62\" />
+		    </a>
+	    </div>";
 
  
 

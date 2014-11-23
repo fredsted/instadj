@@ -145,10 +145,12 @@
 		$('#grid').on("mouseenter", ".video", 
 			function(event){ 
 				$(this).children('.related').fadeIn(100);
+			    	$(this).children('.playoverlay').fadeIn(100);
 			});
 		$('#grid').on("mouseleave", ".video", 
 			function(event){ 
-				$(this).children('.related').hide(); 
+				$(this).children('.related').hide();
+			    	$(this).children('.playoverlay').hide();
 			});
 			
 		$('#grid').on("click", ".related", 

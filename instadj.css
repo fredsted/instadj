@@ -258,6 +258,12 @@ body.isDark #grid .video {
     margin-top: 15px;
 }
 .dropdown-menu label { display: inline }
+.playoverlay {
+    background: url(/playoverlay.svg)  no-repeat center center;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
 .related a {
     position: absolute;
     padding-left: 3px;
