@@ -23,9 +23,6 @@ body {
     position: absolute;
 }
 
-#drpdownSearchMenu {
-}
-
 #txtSearch {
     width: auto;
     float: left;
@@ -74,26 +71,6 @@ body {
 
 #sharingoptions div {
     float: left
-}
-
-#intro {
-    top: 50px;
-    position: absolute;
-    text-align: center;
-    width: 100%;
-}
-
-#intro h1 {
-    font-weight: 700;
-    font-size: 32px;
-}
-
-#settings {
-    position: absolute;
-    right: 10px;
-    display: none;
-    color: white;
-    text-align: right;
 }
 
 /* ####### BLOCKS */
@@ -184,28 +161,6 @@ body {
     height: 30px
 }
 
-#recent {
-    position: relative;
-    margin: 0 auto;
-    top: 320px;
-    width: 250px;
-    text-align: center;
-}
-
-#recent h3 {
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-a.recent {
-    line-height: 25px;
-    font-size: 14px;
-}
-
-#facebook {
-    margin-top: 60px
-}
-
 /* ####### GRID */
 #grid {
     font-size: 13px;
@@ -217,7 +172,7 @@ a.recent {
     right: 10px;
 }
 
-#grid .video {
+.video {
     margin: 0 10px 10px 0;
     width: 166px;
     height: 165px;
@@ -300,13 +255,6 @@ a.recent {
 .related a {
     color: black;
     font-size: 11px;
-}
-
-#gridoptions {
-    position: absolute;
-    right: 5%;
-    top: 325px;
-    padding-left: 20px;
 }
 
 .loadmore {
