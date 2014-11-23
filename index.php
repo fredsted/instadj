@@ -21,28 +21,17 @@
 	<meta charset="utf-8" />
 </head>
 <body>
-	<script type="text/javascript">
-		$('body').hide();
-		$('body').fadeIn(500);
-	</script>
 
 	<div id="main">
-		<div id="intro">
-			<img src="instadj-big.png" width="447" height="148">
-
-			<h1>Create and share YouTube playlists.</h1>
-
-
-		</div>
 		
-		<div id="player" class="hidden">
+		<div id="player">
 			<div id="videoDiv">Click video to play</div>
 		</div>
 		
-		<div id="share" class="hidden">
+		<div id="share">
 			
-	   		<div id="sharingoptions" style="display:none;">
 			<button class="btn btn-success" id="btnGenerate" disabled="disabled"><i class="glyphicon glyphicon-envelope glyphicon-white"></i> Share/Save</button>
+	   		<div id="sharingoptions">
 	   			<div id="sharethisbuttons" style="float:left;">	
 					 <div id="stbtn1">
 						 <a href="" id="btnGenFacebook" target="_blank">
@@ -64,11 +53,11 @@
 		    </div>
 		</div>
 		
-		<div id="playlist" class="well hidden">
+		<div id="playlist" class="well">
 			<ul class="nav nav-pills nav-stacked" id="playlistcontent"></ul>
 		</div>
 
-		<div id="playlistcontrols" style="display:none;">
+		<div id="playlistcontrols">
 			<div class="btn-group" role="group">
 				<button class="btn btn-default" id="previous"><i class="glyphicon glyphicon-fast-backward"></i> Previous</button>
 				<button class="btn btn-default" id="pauseplay"><i class="glyphicon glyphicon-pause"></i> Pause/Play</button>
@@ -78,7 +67,7 @@
 		</div>
 		
 		<div id="controls">
-			<a href="./" class="hidden logo-sm"><img src="instadj.png" id="smallogo" title="Create &amp; Share YouTube Playlists with InstaDJ" /></a>
+			<a href="./" class="logo-sm"><img src="instadj.png" id="smallogo" title="Create &amp; Share YouTube Playlists with InstaDJ" /></a>
 
 			<input type="search" id="txtSearch" class="form-control search-query" placeholder="YouTube Search…" />
 			
@@ -95,22 +84,14 @@
 			</div> 
 
 			
-			<div id="viewoptions" style="float:right;" class="hidden">
+			<div id="viewoptions" style="float:right;">
 				<button class="btn btn-default" id="togglelight"    data-toggle="button"><i class="glyphicon glyphicon-adjust"></i> Theme</button>
 				<button class="btn btn-default" id="togglelistview" data-toggle="button"><i class="glyphicon glyphicon-resize-small"></i> Grid</button>
 			</div>
 		</div>
-		
-		<div id="recent">
-		<?php include('recentsearches.inc.php'); ?>
-		<div id="facebook">
-				<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ffacebook.com%2Finstadjdotcom&amp;width&amp;layout=box_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:49px; margin-left: 10px; height:65px;" allowTransparency="true"></iframe>
-		</div>
-
-		</div>
 
 	</div>
-	<div id="grid" class="hidden"></div>
+	<div id="grid"></div>
 	
 	<script src="js/json2.js"></script>
 

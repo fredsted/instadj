@@ -540,7 +540,7 @@
 	}
 		
 	function firstactions() {
-		if (first == true) {
+		/*if (first == true) {
 
 			$('#controls').css({
 				'position': 'absolute', 
@@ -559,8 +559,8 @@
 
 			$('#recent, #intro').hide();
 
-			$('.hidden').show();
-		}
+			$('.hidden').removeClass('hidden');
+		}*/
 	}
 	
 
