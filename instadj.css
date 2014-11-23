@@ -290,18 +290,7 @@ body.isDark #grid .video {
 }
 /* ####### MISC */
 ul.nav { margin: 0 }
-.stButton {
-    !important: ;
-    margin-right: 3px;
-    margin-left: 0px;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    padding: 0 !important;
-}
-.stButton .chicklets {
-    padding-right: 0!important;
-    padding-left: 16px !important;
-}
-#stbtn1 {
+
+#sbtn001 {
 	margin-right: 1px;
 }

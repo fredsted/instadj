@@ -31,25 +31,28 @@
 		<div id="share">
 			
 			<button class="btn btn-success" id="btnGenerate" disabled="disabled"><i class="glyphicon glyphicon-envelope glyphicon-white"></i> Share/Save</button>
-	   		<div id="sharingoptions">
+	   		<div id="sharingoptions" class="hidden">
 	   			<div id="sharethisbuttons" style="float:left;">	
-					 <div id="stbtn1">
-						 <a href="" id="btnGenFacebook" target="_blank">
-						 	<img rel="tooltip" src="/facebook_32.png" width="32" height="32" title="Share on Facebook"  />
+					 <div id="sbtn001">
+						 <a href="" target="_blank">
+						 	<img rel="tooltip" src="/s001.png" width="32" height="32" title="Share link on Ｆａｃｅｂｏｏｋ"  />
 						 </a>
 					 </div>
-					 <div id="stbtn2">
-						 <a href="#" id="btnGenTwitter" target="_blank">
-						 	<img rel="tooltip" src="/twitter_32.png" width="32" height="32" title="Share on Twitter"  />
+					 <div id="sbtn002">
+						 <a href="#" target="_blank">
+						 	<img rel="tooltip" src="/s002.png" width="32" height="32" title="Share link on Ｔｗｉｔｔｅｒ"  />
 						 </a>						 
 					 </div>
 					 <div id="stbtn3" title="Email this playlist.">
 						 <a href="#" id="btnGenEmail">
-							<img rel="tooltip" src="/email_32.png" width="32" height="32" title="Share via e-mail" />
+							<img rel="tooltip" src="/email_32.png" width="32" height="32" title="Share link via e-mail" />
 						 </a>
 					 </div>
 				</div>  
-	   			<input rel="tooltip" type="text" class="input" id="playlistcode" readonly="readonly" value="" title="Playlist link. Share it!"></input>				 		
+	   			<input rel="tooltip" type="text" class="form-control"
+			           id="playlistcode" readonly="readonly" value=""
+			           title="Playlist link. Share it!" />
+
 		    </div>
 		</div>
 		

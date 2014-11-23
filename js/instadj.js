@@ -303,11 +303,11 @@
 					
 					$("#playlistcode").attr("value", $url);
 					
-					$("#btnGenFacebook").attr("href", 
-						"https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Finstadj.com%2F"+data);
+					$("#sbtn001 a").attr("href",
+						"https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Finstadj.com%2F"+data);
 						
-					$("#btnGenTwitter").attr("href",
-						"https://twitter.com/intent/tweet?text="
+					$("#sbtn002 a").attr("href",
+						"https://www.twitter.com/intent/tweet?text="
 						+"Check%20out%20my%20InstaDJ%20playlist."
 						+"&url=http://instadj.com/"+data);
 					
@@ -316,41 +316,13 @@
 						+"&body=Hi, I made a playlist and thou"+
 						"ght you might like it: "+$url);
 					
-												
-			         /*stWidget.addEntry({
-			                 "service":"facebook",
-			                 "element":document.getElementById('stbtn1'),
-			                 "url":$url,
-			                 "title":"Check out my InstaDJ playlist.",
-			                 "type":"large",
-			                 "text":""
-			         });
-			         
-			         stWidget.addEntry({
-			                 "service":"twitter",
-			                 "element":document.getElementById('stbtn2'),
-			                 "url":$url,
-			                 "title":"Check out my InstaDJ playlist.",
-			                 "type":"large",
-			                 "text":""
-			         });		
-			         
-			         stWidget.addEntry({
-			                 "service":"email",
-			                 "element":document.getElementById('stbtn3'),
-			                 "url":$url,
-			                 "title":"Check out my InstaDJ playlist.",
-			                 "type":"large",
-			                 "text":""
-			         });*/
-				
 				}
 				
 			});
 			
 
 			$(this).attr("disabled","disabled");
-			$("#sharingoptions").fadeIn();
+			$("#sharingoptions").removeClass('hidden').fadeIn();
 		});
 
 
