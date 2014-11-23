@@ -187,7 +187,7 @@
 		
 			$("#txtSearch").addClass("loading");
 			
-			geturl = 'yt.php?action=search&q='+$('#txtSearch').attr('value');
+			geturl = 'yt.php?action=search&q='+$('#txtSearch').val();
 			
 			if (listview === true) { geturl = geturl + '&class=videolist'}
 			
