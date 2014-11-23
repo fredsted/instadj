@@ -103,7 +103,9 @@
 
 </div>
 
-<div id="grid"></div>
+<div id="gridcontainer">
+	<div id="grid"></div>
+</div>
 
 <script src="assets/js/json2.js"></script>
 

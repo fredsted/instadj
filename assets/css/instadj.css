@@ -171,26 +171,42 @@ body {
 
 
 /* ####### GRID */
-#grid {
-    font-size: 13px;
-    overflow-y: auto;
+#gridcontainer {
+    overflow-x: hidden;
+    overflow-y: scroll;
+
     position: absolute;
-    top: 50px;
+    top: 55px;
     left: 415px;
     bottom: 10px;
     right: 10px;
 }
 
+#grid {
+    font-size: 13px;
+    overflow-y: auto;
+
+    height: auto;
+
+    -webkit-column-width: 166px; /* Chrome, Safari, Opera */
+    -moz-column-width: 166px; /* Firefox */
+    column-width: 166px;
+    column-fill: ;
+}
+
 .video {
-    margin: 0 10px 10px 0;
     width: 166px;
-    height: 165px;
-    float: left;
+    height: 185px;
     position: relative;
     cursor: pointer;
     background-size: 166px 125px !important;
     background-repeat: no-repeat !important;
     background: #FFF;
+    -webkit-column-break-inside:avoid;
+    -moz-column-break-inside:avoid;
+    -o-column-break-inside:avoid;
+    -ms-column-break-inside:avoid;
+    column-break-inside:avoid;
 }
 
 .title {
