@@ -114,8 +114,8 @@ ini_set( 'display_errors','0');
 	<a href="$url" class="title"> $title</a>
 	$hd
 	<span class="videoinfo">$views views</span>
-	<span class="playoverlay">&nbsp;</span>
-	<span class="related" style="display:none;"><a href="#" data-href="yt.php?action=related&id=$id">Related</a></span>
+	<div class="playoverlay">&nbsp;</div>
+	<span class="related" style="display:none;"><a href="#" data-href="yt.php?action=related&id=$id"><i class="glyphicon glyphicon-search"></i> Related</a></span>
 </div>
 HTML;
 	    
@@ -125,14 +125,14 @@ HTML;
 			<a href=\"yt.php?action=".qs('action')
 	         .'&q='.qs('q').'&user='.qs('user').'&id='.qs('id')
 	         .'&feed='.qs('feed')."\">
-                <img class=\"loadmoreimg\" src=\"more.png\" width=\"62\" height=\"62\" />
+                <img class=\"loadmoreimg\" src=\"more.png\" width=\"62\" height=\"62\" /><br />Load more
 		    </a>
 	    </div>";
 
  
 
 } else {
-echo "No results!";
+echo "No results!".readcache($queryURL);
 }
 
 

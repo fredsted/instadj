@@ -43,6 +43,8 @@
 		//$.get('recentsearches.inc.php', function(data){
 		//	$("#recent").html(data);
 		//});
+
+	    	loadRedditPlaylist('futurebeats');
 		
 
 		
@@ -126,7 +128,7 @@
 		$(document).on("click", ".video", function(event) {
 		  	var video_id = $(this).children("a").attr("href").match(/v=(.{11})/)[1];
 		  	var video_title = $(this).children("a").text();
-		  	$(this).children("a").fadeOut('fast').fadeIn('fast');
+		  	$(this).children(".playoverlay").fadeOut('fast').fadeIn('fast');
 			addtoplaylist(video_id, video_title);
 		  	return false;
 		});
@@ -152,6 +154,15 @@
 				$(this).children('.related').hide();
 			    	$(this).children('.playoverlay').hide();
 			});
+
+	    	$('#playlistcontent').on("mouseenter", "li", function(e) {
+		    	$(this).children('.playlistremove').show();
+		    	$(this).children('.playlistitem').css({'width': '355px'});
+		});
+		$('#playlistcontent').on("mouseleave", "li", function(e) {
+			$(this).children('.playlistremove').hide();
+			$(this).children('.playlistitem').css({'width': '379px'});
+		});
 			
 		$('#grid').on("click", ".related", 
 			function() {
@@ -177,33 +188,33 @@
 		});
 		
 		$("#btnSearch").click(function(){
-		
+
 			if ($('#txtSearch').attr('value') == '') {
 				$('#txtSearch').attr('placeholder', 'Enter song or artist…');
 				$('#txtSearch').focus();
 			} else {
-		
+
 			firstactions();
-		
+
 			$("#txtSearch").addClass("loading");
-			
+
 			geturl = 'yt.php?action=search&q='+$('#txtSearch').val();
-			
+
 			if (listview === true) { geturl = geturl + '&class=videolist'}
-			
+
 			$.ajax({
 			  url: geturl,
 			  success: function(data) {
 				$('#grid').empty();
 			    $('#grid').html(data);
 			    $("#txtSearch").removeClass("loading");
-			    $('#grid').scrollTo($('#grid').children().first(), {duration: 500});
+			     // $('#grid').scrollTo($('#grid').children().first(), {duration: 500});
 			  }
 			});
-			
+
 			}
 		});
-			
+
 		$("#txtSearch").keypress(function(e) {
 		 //Enter key
 			if (e.which == 13) {
@@ -285,7 +296,7 @@
 		});	
 			
 		$("#btnGenerate").click(function(){ 
-			$("#playlistcode, #smallogo").tooltip({placement: 'top'});
+			$("#playlistcode, #smallogo, img[rel=tooltip]").tooltip({placement: 'top'});
 			playlistarray = {};
 			
 			$(".playlistitem").each(function(index){
@@ -315,7 +326,7 @@
 						"mailto:?subject=Check out my playlist"
 						+"&body=Hi, I made a playlist and thou"+
 						"ght you might like it: "+$url);
-					
+
 				}
 				
 			});
@@ -506,7 +517,7 @@
 		
 		$('#btnGenerate').show().removeAttr('disabled');
 		
-		$('#playlistcontent').append($('<li class="'+activehtml+'"><a class="playlistitem" href="#" data-id="'+id+'">'+title+'</a><button class="btn btn-mini playlistremove"><i class="icon-minus"></i></button></li>').hide().fadeIn());
+		$('#playlistcontent').append($('<li class="'+activehtml+'"><a class="playlistitem" href="#" data-id="'+id+'">'+title+'</a><button class="btn btn-xs playlistremove"><i class="glyphicon-minus"></i></button></li>').hide().fadeIn());
 		
 		if (!(noscroll == true)) {
 			$('#playlist').scrollTo($('#playlist ul').children().last(), {duration: 500});
@@ -551,7 +562,12 @@
 					$("#txtSearch").removeClass("loading");
 					var classListview = '';
 					if (listview === true) { classListview = ' videolist'; }
-					item = $("#grid").append('<div class="video '+classListview+'" style="background-image:url(http://i.ytimg.com/vi/'+id+'/1.jpg);"><a href="http://www.youtube.com/watch?v='+id+'" class="title"> '+title+'</a><span class="related" style="display:none;"><a href="#" data-href="yt.php?action=related&id='+id+'">Related</a></span></div>');
+					item = $("#grid").append('<div class="video '+classListview+'" ' +
+					'style="background-image:url(http://i.ytimg.com/vi/'+id+'/1.jpg);">' +
+					'<a href="http://www.youtube.com/watch?v='+id+'" class="title"> '+title+'</a>' +
+					'<div class="playoverlay">&nbsp;</div>' +
+					'<span class="related" style="display:none;">' +
+					'<a href="#" data-href="yt.php?action=related&id='+id+'"><i class="glyphicon glyphicon-search"></i> Related</a></span></div>');
 					
 				});
 			}
