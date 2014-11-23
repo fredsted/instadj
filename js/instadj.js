@@ -93,7 +93,6 @@ $(function () {
 
 
     $("#dropdownMenu").on("click", ".btnReddit", function (e) {
-	firstactions();
 	loadRedditPlaylist($(this).attr('data-playlist'));
     });
 
@@ -189,14 +188,10 @@ $(function () {
     });
 
     $("#btnSearch").click(function () {
-
 	if ($('#txtSearch').attr('value') == '') {
 	    $('#txtSearch').attr('placeholder', 'Enter song or artist…');
 	    $('#txtSearch').focus();
 	} else {
-
-	    firstactions();
-
 	    $("#txtSearch").addClass("loading");
 
 	    geturl = 'yt.php?action=search&q=' + $('#txtSearch').val();
@@ -402,9 +397,6 @@ $(document).on("click", "#btnFavorites", function (event) {
 	$('#txtSearch').attr('placeholder', 'Enter username…');
 	$('#txtSearch').focus();
     } else {
-
-	firstactions();
-
 	$("#txtSearch").addClass("loading");
 
 	$.ajax({
@@ -427,8 +419,6 @@ $(document).on("click", "#btnUploads", function (event) {
 	$('#txtSearch').attr('placeholder', 'Enter username…');
 	$('#txtSearch').focus();
     } else {
-	firstactions();
-
 	$("#txtSearch").addClass("loading");
 
 	if (first == true) {
@@ -555,8 +545,6 @@ function loadRedditPlaylist(subreddit) {
 }
 
 function getplaylist(id) {
-    firstactions();
-
     $.ajax({
 	url: 'store.php?action=get&id=' + id,
 	success: function (data) {
