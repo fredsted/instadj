@@ -70,7 +70,7 @@
 		</div>
 		
 		<div id="controls">
-			<a href="./" class="logo-sm"><img src="instadj.png" id="smallogo" title="Create &amp; Share YouTube Playlists with InstaDJ" /></a>
+			<a href="./" class="logo-sm"><img src="assets/images/instadj.png" id="smallogo" title="Create &amp; Share YouTube Playlists with InstaDJ" /></a>
 
 			<input type="search" id="txtSearch" class="form-control search-query" placeholder="YouTube Search…" />
 			

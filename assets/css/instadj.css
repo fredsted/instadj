@@ -30,7 +30,7 @@ body {
     margin-right: 5px;
 }
 #txtSearch.loading {
-    background: url(../../miniloader.gif) no-repeat center right;
+    background: url(../images/miniloader.gif) no-repeat center right;
     background-origin: content-box;
 }
 #btngrpSearch {
