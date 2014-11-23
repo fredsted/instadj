@@ -70,8 +70,7 @@
 
 	<div id="playlistcontrols">
 		<div class="btn-group" role="group">
-			<button class="btn btn-default" id="previous"><i class="glyphicon glyphicon-fast-backward"></i> Previous
-			</button>
+			<button class="btn btn-default" id="previous"><i class="glyphicon glyphicon-fast-backward"></i> Previous</button>
 			<button class="btn btn-default" id="pauseplay"><i class="glyphicon glyphicon-pause"></i> Pause/Play</button>
 			<button class="btn btn-default" id="next"><i class="glyphicon glyphicon-fast-forward"></i> Next</button>
 			<button class="btn btn-default" id="shuffle"><i class="glyphicon glyphicon-random"></i> Shuffle</button>
@@ -97,23 +96,16 @@
 				<li class="divider"></li>
 			</ul>
 		</div>
+
+		<div id="facebook">
+			<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Finstadjdotcom&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>		</div>
 	</div>
 
 </div>
+
 <div id="grid"></div>
 
 <script src="assets/js/json2.js"></script>
-
-<!-- Facebook -->
-<div id="fb-root"></div>
-<script>(function (d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s);
-		js.id = id;
-		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
 
 <!-- Analytics -->
 <script type="text/javascript">

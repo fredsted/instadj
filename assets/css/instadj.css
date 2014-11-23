@@ -12,7 +12,7 @@ body {
     font-size: 13px;
 }
 
-/* ####### SEARCH, SHARING */
+/* ####### SEARCH, LOGO */
 #controls {
     height: 30px;
     right: 10px;
@@ -27,7 +27,7 @@ body {
     width: auto;
     float: left;
     left: 155px;
-    right: 285px;
+    right: 225px;
     position: absolute;
     margin-right: 5px;
 }
@@ -39,7 +39,13 @@ body {
 
 #btngrpSearch {
     position: absolute;
-    right: 170px;
+    right: 110px;
+}
+#facebook {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 85px;
 }
 
 #smallogo {
@@ -47,6 +53,7 @@ body {
     margin-right: 10px;
 }
 
+/* ####### SHARING */
 #btnGenerate {
     float: right;
     position: relative;
@@ -71,6 +78,17 @@ body {
 
 #sharingoptions div {
     float: left
+}
+
+#share {
+    position: absolute;
+    bottom: 10px;
+    width: 390px;
+    left: 10px;
+}
+
+#sharethisbuttons {
+    height: 30px
 }
 
 /* ####### BLOCKS */
@@ -150,16 +168,6 @@ body {
     display: none;
 }
 
-#share {
-    position: absolute;
-    bottom: 10px;
-    width: 390px;
-    left: 10px;
-}
-
-#sharethisbuttons {
-    height: 30px
-}
 
 /* ####### GRID */
 #grid {
