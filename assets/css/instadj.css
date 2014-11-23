@@ -4,12 +4,14 @@ body {
     overflow: hidden;
     margin-top: 10px;
 }
+
 /* ####### MAIN */
 #main {
     margin: 0px auto;
     height: 100%;
     font-size: 13px;
 }
+
 /* ####### SEARCH, SHARING */
 #controls {
     height: 30px;
@@ -20,7 +22,10 @@ body {
     width: auto;
     position: absolute;
 }
-#drpdownSearchMenu { }
+
+#drpdownSearchMenu {
+}
+
 #txtSearch {
     width: auto;
     float: left;
@@ -29,23 +34,28 @@ body {
     position: absolute;
     margin-right: 5px;
 }
+
 #txtSearch.loading {
     background: url(../images/miniloader.gif) no-repeat center right;
     background-origin: content-box;
 }
+
 #btngrpSearch {
     position: absolute;
     right: 170px;
 }
+
 #smallogo {
     float: left;
     margin-right: 10px;
 }
+
 #btnGenerate {
     float: right;
     position: relative;
     margin-top: 2px;
 }
+
 #playlistcode {
     float: left;
     position: relative;
@@ -61,13 +71,18 @@ body {
     margin-bottom: 0;
     color: #222;
 }
-#sharingoptions div { float: left }
+
+#sharingoptions div {
+    float: left
+}
+
 #intro {
     top: 50px;
     position: absolute;
     text-align: center;
     width: 100%;
 }
+
 #intro h1 {
     font-weight: 700;
     font-size: 32px;
@@ -80,6 +95,7 @@ body {
     color: white;
     text-align: right;
 }
+
 /* ####### BLOCKS */
 #player {
     /* "Click to play" text */
@@ -95,6 +111,7 @@ body {
     width: 390px;
     margin-bottom: 5px;
 }
+
 #playlistcontrols {
     position: absolute;
     top: 285px;
@@ -103,10 +120,12 @@ body {
     width: 390px;
     margin: 0 auto;
 }
+
 #pauseplay {
-    padding-left:  22px;
+    padding-left: 22px;
     padding-right: 22px;
 }
+
 #playlist {
     overflow-y: auto;
     overflow-x: hidden;
@@ -118,16 +137,22 @@ body {
     bottom: 50px;
     margin: 0;
 }
+
 #playlistcontent {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-#playlistcontent li { height: 26px }
+
+#playlistcontent li {
+    height: 26px
+}
+
 #playlistcontent li.active a {
     color: #FFF;
     text-overflow: ellipsis;
 }
+
 #playlistcontent li a {
     overflow: hidden;
     white-space: nowrap;
@@ -140,19 +165,25 @@ body {
     color: #000;
     margin-bottom: 2px;
 }
+
 .playlistremove {
     float: right;
     margin-top: 0px;
     height: 25px;
     display: none;
 }
+
 #share {
     position: absolute;
     bottom: 10px;
     width: 390px;
     left: 10px;
 }
-#sharethisbuttons { height: 30px }
+
+#sharethisbuttons {
+    height: 30px
+}
+
 #recent {
     position: relative;
     margin: 0 auto;
@@ -160,15 +191,21 @@ body {
     width: 250px;
     text-align: center;
 }
+
 #recent h3 {
     text-align: center;
     margin-bottom: 5px;
 }
+
 a.recent {
     line-height: 25px;
     font-size: 14px;
 }
-#facebook { margin-top: 60px }
+
+#facebook {
+    margin-top: 60px
+}
+
 /* ####### GRID */
 #grid {
     font-size: 13px;
@@ -179,6 +216,7 @@ a.recent {
     bottom: 10px;
     right: 10px;
 }
+
 #grid .video {
     margin: 0 10px 10px 0;
     width: 166px;
@@ -190,6 +228,7 @@ a.recent {
     background-repeat: no-repeat !important;
     background: #FFF;
 }
+
 .title {
     position: relative;
     top: 125px;
@@ -203,9 +242,13 @@ a.recent {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.video a:hover { text-decoration: none }
+
+.video a:hover {
+    text-decoration: none
+}
+
 .playoverlay {
-    background: url(/assets/images/playoverlay.svg)  no-repeat center center;
+    background: url(/assets/images/playoverlay.svg) no-repeat center center;
     display: none;
     width: 166px;
     height: 120px;
@@ -223,19 +266,21 @@ a.recent {
     padding: 2px;
     border-radius: 2px;
     opacity: 0.7;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0,1);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 }
+
 .videoinfo {
     position: absolute;
     right: 5px;
     font-size: 10px;
-    display: block!important;
+    display: block !important;
     text-align: right;
     line-height: 10px;
     top: 110px;
     color: #AAA;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0,1);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 }
+
 .related {
     position: absolute;
     top: 10px;
@@ -247,6 +292,7 @@ a.recent {
     color: black;
     opacity: 0.6;
 }
+
 .related:hover {
     opacity: 1.0;
 }
@@ -255,7 +301,6 @@ a.recent {
     color: black;
     font-size: 11px;
 }
-
 
 #gridoptions {
     position: absolute;
@@ -272,16 +317,21 @@ a.recent {
     width: 170px;
     height: 185px;
 }
+
 .loadmore img {
     margin-top: 35px;
     margin-bottom: 15px;
 }
-.dropdown-menu label { display: inline }
 
+.dropdown-menu label {
+    display: inline
+}
 
 /* ####### MISC */
-ul.nav { margin: 0 }
+ul.nav {
+    margin: 0
+}
 
 #sbtn001 {
-	margin-right: 1px;
+    margin-right: 1px;
 }
