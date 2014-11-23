@@ -6,4 +6,4 @@ stats/*
 reddit/cache/*
 icon/*
 database.db
-reddit/cache/*
+.idea

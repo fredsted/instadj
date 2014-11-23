@@ -2,21 +2,23 @@
 <html>
 <head>
 	<title>Create &amp; Share YouTube Playlists with InstaDJ</title>
-	<script src="js/jquery-1.7.2.min.js"></script>
 
 	<script type="text/javascript">
 	   var loadplaylist = '<?php echo (isset($_GET['id']) ? preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['id']) : '') ?>';  		
 	</script>
+
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="js/jquery.dragsort-0.5.1.min.js"></script>
 	<script src="js/instadj.js"></script>
-	<meta name="description" content="With InstaDJ you can create and share playlists with ease. It's great for parties or just queueing up videos." />
-	<meta charset="utf-8" />
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="instadj.css">
 
 	<style type="text/css">
 		.hidden { display: none; }
 	</style>
+
+	<meta name="description" content="With InstaDJ you can create and share playlists with ease. It's great for parties or just queueing up videos." />
+	<meta charset="utf-8" />
 </head>
 <body>
 	<script type="text/javascript">
@@ -39,8 +41,8 @@
 		
 		<div id="share" class="hidden">
 			
-			<button class="btn btn-success" id="btnGenerate" disabled="disabled"><i class="icon icon-envelope icon-white"></i> Share/Save</button>
 	   		<div id="sharingoptions" style="display:none;">
+			<button class="btn btn-success" id="btnGenerate" disabled="disabled"><i class="glyphicon glyphicon-envelope glyphicon-white"></i> Share/Save</button>
 	   			<div id="sharethisbuttons" style="float:left;">	
 					 <div id="stbtn1">
 						 <a href="" id="btnGenFacebook" target="_blank">
@@ -67,22 +69,22 @@
 		</div>
 
 		<div id="playlistcontrols" style="display:none;">
-			<div class="btn-group" style="margin-left: 25px;">
-				<button class="btn" id="previous"><i class="icon icon-fast-backward"></i> Previous</button>
-				<button class="btn" id="pauseplay"><i class="icon icon-pause"></i> Pause/Play</button>
-				<button class="btn" id="next"><i class="icon icon-fast-forward"></i> Next</button>
-				<button class="btn" id="shuffle"><i class="icon icon-random"></i> Shuffle</button>
+			<div class="btn-group" role="group">
+				<button class="btn btn-default" id="previous"><i class="glyphicon glyphicon-fast-backward"></i> Previous</button>
+				<button class="btn btn-default" id="pauseplay"><i class="glyphicon glyphicon-pause"></i> Pause/Play</button>
+				<button class="btn btn-default" id="next"><i class="glyphicon glyphicon-fast-forward"></i> Next</button>
+				<button class="btn btn-default" id="shuffle"><i class="glyphicon glyphicon-random"></i> Shuffle</button>
 			</div>
 		</div>
 		
 		<div id="controls">
 			<a href="./" class="hidden logo-sm"><img src="instadj.png" id="smallogo" title="Create &amp; Share YouTube Playlists with InstaDJ" /></a>
 
-			<input type="text" id="txtSearch" class="input search-query" placeholder="YouTube Search…" />
+			<input type="search" id="txtSearch" class="form-control search-query" placeholder="YouTube Search…" />
 			
-			<div id="btngrpSearch" class="btn-group" style="float:left;">
-				 <button class="btn btn-primary" id="btnSearch"><i class="icon  icon-search icon-white"></i> Search</button>
-				 <button class="btn dropdown-toggle" id="drpdownSearchMenu" data-toggle="dropdown">
+			<div id="btngrpSearch" class="btn-group">
+				 <button class="btn btn-primary" id="btnSearch"><i class="glyphicon  glyphicon-search glyphicon-white"></i> Search</button>
+				 <button class="btn btn-default dropdown-toggle" id="drpdownSearchMenu" data-toggle="dropdown">
 				   <span class="caret"></span>
 				 </button>
 				 <ul class="dropdown-menu" id="dropdownMenu">
@@ -94,8 +96,8 @@
 
 			
 			<div id="viewoptions" style="float:right;" class="hidden">
-				<button class="btn" id="togglelight"    data-toggle="button"><i class="icon icon-adjust"></i> Theme</button>
-				<button class="btn" id="togglelistview" data-toggle="button"><i class="icon icon-resize-small"></i> Grid</button>
+				<button class="btn btn-default" id="togglelight"    data-toggle="button"><i class="glyphicon glyphicon-adjust"></i> Theme</button>
+				<button class="btn btn-default" id="togglelistview" data-toggle="button"><i class="glyphicon glyphicon-resize-small"></i> Grid</button>
 			</div>
 		</div>
 		
@@ -135,11 +137,9 @@
 	  })();
 	</script>
 
-	<script src="js/jquery.scrollTo-1.4.2-min.js"></script>
-	<script src="bootstrap/js/bootstrap-tooltip.js"></script>
-	<script src="bootstrap/js/bootstrap-button.js"></script>
-	<script src="bootstrap/js/bootstrap-dropdown.js"></script>
-	<script src="bootstrap/js/bootstrap-typeahead.js"></script>
+	<script src="js/jquery.scrollTo.min.js"></script>
+	<script src="js/bootstrap3-typeahead.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>
