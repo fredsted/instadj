@@ -26,8 +26,8 @@ body {
 #txtSearch {
     width: auto;
     float: left;
-    left: 155px;
-    right: 225px;
+    left: 405px;
+    right: 120px;
     position: absolute;
     margin-right: 5px;
 }
@@ -39,18 +39,19 @@ body {
 
 #btngrpSearch {
     position: absolute;
-    right: 110px;
+    right: 0px;
 }
 #facebook {
     position: absolute;
-    right: 5px;
-    top: 5px;
-    width: 85px;
+    left: 155px;
+    top: 7px;
+    width: 225px;
 }
 
 #smallogo {
-    float: left;
-    margin-right: 10px;
+    position: absolute;
+    left: 0px;
+    top: 2px;
 }
 
 /* ####### SHARING */
@@ -100,7 +101,7 @@ body {
     font-weight: bolder;
     font-size: 24px;
     position: absolute;
-    top: 50px;
+    top: 55px;
     left: 10px;
     height: 220px;
     width: 390px;
@@ -129,7 +130,7 @@ body {
     position: absolute;
     top: 330px;
     left: 10px;
-    bottom: 50px;
+    bottom: 55px;
     margin: 0;
 }
 
