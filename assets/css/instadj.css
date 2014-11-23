@@ -30,7 +30,7 @@ body {
     margin-right: 5px;
 }
 #txtSearch.loading {
-    background: url(miniloader.gif) no-repeat center right;
+    background: url(../../miniloader.gif) no-repeat center right;
     background-origin: content-box;
 }
 #btngrpSearch {
@@ -205,21 +205,12 @@ a.recent {
 }
 .video a:hover { text-decoration: none }
 .playoverlay {
-    background: url(/playoverlay.svg)  no-repeat center center;
+    background: url(/assets/images/playoverlay.svg)  no-repeat center center;
     display: none;
     width: 166px;
     height: 120px;
 }
 
-
-body.isDark #grid .video {
-	box-shadow: 2px 4px 7px #222;
-}
-.videolist {
-    width: 300px!important;
-    height: 200px!important;
-    background-size: 300px 200px!important;
-}
 .hd {
     background: #FF0000;
     position: absolute;
@@ -265,18 +256,6 @@ body.isDark #grid .video {
     font-size: 11px;
 }
 
-.videolist .hd { bottom: 15px }
-.videolist .title {
-    width: 294px;
-    top: 10px;
-    padding-top: 4px;
-	font-size: 16px!important;
-	line-height:20px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-size: 13px!important;
-    letter-spacing: 90%;
-}
 
 #gridoptions {
     position: absolute;

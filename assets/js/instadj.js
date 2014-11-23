@@ -4,7 +4,6 @@ var currentState;
 var gpfirst = true;
 var done = false;
 var startfrom = 51;
-var listview = false;
 var tempPlayerState;
 
 // YouTube Api
@@ -107,9 +106,6 @@ $(function () {
 	scrolltothis = $('.loadmore').prev();
 	loadwhat = $('.loadmore').find('a').attr('href');
 	geturl = loadwhat + '&from=' + startfrom;
-	if (listview === true) {
-	    geturl = geturl + '&class=videolist'
-	}
 
 	$.ajax({
 	    url: geturl,
@@ -167,9 +163,6 @@ $(function () {
 	function () {
 	    $(this).children("a").html('<img src="miniloader.gif" />');
 	    geturl = $(this).children("a").attr("data-href");
-	    if (listview === true) {
-		geturl = geturl + '&class=videolist'
-	    }
 
 	    $.ajax({
 		url: geturl,
@@ -195,10 +188,6 @@ $(function () {
 	    $("#txtSearch").addClass("loading");
 
 	    geturl = 'yt.php?action=search&q=' + $('#txtSearch').val();
-
-	    if (listview === true) {
-		geturl = geturl + '&class=videolist'
-	    }
 
 	    $.ajax({
 		url: geturl,
@@ -367,30 +356,6 @@ function onPlayerStateChange(event) {
     }
 }
 
-$(document).on("click", "#togglelistview", function (event) {
-    $('.video').toggleClass('videolist');
-    if (listview === false) {
-	listview = true;
-    } else {
-	listview = false;
-    }
-});
-
-var isDark = false;
-
-$(document).on("click", "#togglelight", function (event) {
-    $(".logo-sm, .logo-sm-dark").toggle();
-    if ($("body").hasClass("isDark")) {
-	$("#smallogo").attr("src", "instadj.png");
-	$('link#darkTheme').remove();
-	$("body").removeClass("isDark");
-    } else {
-	$("body").addClass("isDark");
-	$("#smallogo").attr("src", "instadj.dark.png");
-	$('head').append('<link id="darkTheme" rel="stylesheet" type="text/css" href="http://instadj.com/bootstrap/css/bootstrap.dark.css">');
-    }
-});
-
 
 $(document).on("click", "#btnFavorites", function (event) {
     if ($('#txtSearch').attr('value') == '') {
@@ -528,11 +493,8 @@ function loadRedditPlaylist(subreddit) {
 		var id = $(this).children('a').text();
 		var title = $(this).children('title').text();
 		$("#txtSearch").removeClass("loading");
-		var classListview = '';
-		if (listview === true) {
-		    classListview = ' videolist';
-		}
-		item = $("#grid").append('<div class="video ' + classListview + '" ' +
+
+		item = $("#grid").append('<div class="video" ' +
 		'style="background-image:url(http://i.ytimg.com/vi/' + id + '/1.jpg);">' +
 		'<a href="http://www.youtube.com/watch?v=' + id + '" class="title"> ' + title + '</a>' +
 		'<div class="playoverlay">&nbsp;</div>' +

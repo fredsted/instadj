@@ -8,10 +8,10 @@
 	</script>
 
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="js/jquery.dragsort-0.5.1.min.js"></script>
-	<script src="js/instadj.js"></script>
+	<script src="assets/js/jquery.dragsort-0.5.1.min.js"></script>
+	<script src="assets/js/instadj.js"></script>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="instadj.css">
+	<link rel="stylesheet" href="assets/css/instadj.css">
 
 	<style type="text/css">
 		.hidden { display: none; }
@@ -35,17 +35,17 @@
 	   			<div id="sharethisbuttons" style="float:left;">	
 					 <div id="sbtn001">
 						 <a href="" target="_blank">
-						 	<img rel="tooltip" src="/s001.png" width="32" height="32" title="Share link on Ｆａｃｅｂｏｏｋ"  />
+						 	<img rel="tooltip" src="/assets/images/s001.png" width="32" height="32" title="Share link on Ｆａｃｅｂｏｏｋ"  />
 						 </a>
 					 </div>
 					 <div id="sbtn002">
 						 <a href="#" target="_blank">
-						 	<img rel="tooltip" src="/s002.png" width="32" height="32" title="Share link on Ｔｗｉｔｔｅｒ"  />
+						 	<img rel="tooltip" src="/assets/images/s002.png" width="32" height="32" title="Share link on Ｔｗｉｔｔｅｒ"  />
 						 </a>						 
 					 </div>
 					 <div id="stbtn3" title="Email this playlist.">
 						 <a href="#" id="btnGenEmail">
-							<img rel="tooltip" src="/email_32.png" width="32" height="32" title="Share link via e-mail" />
+							<img rel="tooltip" src="/assets/images/email_32.png" width="32" height="32" title="Share link via e-mail" />
 						 </a>
 					 </div>
 				</div>  
@@ -84,19 +84,13 @@
 				   <li><a href="#" id="btnUploads">User Uploads</a></li>
 				   <li class="divider"></li>
 				 </ul> 
-			</div> 
-
-			
-			<div id="viewoptions" style="float:right;">
-				<button class="btn btn-default" id="togglelight"    data-toggle="button"><i class="glyphicon glyphicon-adjust"></i> Theme</button>
-				<button class="btn btn-default" id="togglelistview" data-toggle="button"><i class="glyphicon glyphicon-resize-small"></i> Grid</button>
 			</div>
 		</div>
 
 	</div>
 	<div id="grid"></div>
 	
-	<script src="js/json2.js"></script>
+	<script src="assets/js/json2.js"></script>
 
 	<!-- Facebook -->
 	<div id="fb-root"></div>
@@ -121,8 +115,8 @@
 	  })();
 	</script>
 
-	<script src="js/jquery.scrollTo.min.js"></script>
-	<script src="js/bootstrap3-typeahead.min.js"></script>
+	<script src="assets/js/jquery.scrollTo.min.js"></script>
+	<script src="assets/js/bootstrap3-typeahead.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 </body>
