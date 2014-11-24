@@ -192,7 +192,6 @@ body {
     -webkit-column-width: 166px; /* Chrome, Safari, Opera */
     -moz-column-width: 166px; /* Firefox */
     column-width: 166px;
-    column-fill: ;
 }
 
 .video {
