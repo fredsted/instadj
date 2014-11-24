@@ -310,3 +310,25 @@ ul.nav {
 #sbtn001 {
     margin-right: 1px;
 }
+
+/* ####### IE FIXES */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+    /* IE 11 is really buggy with column content */
+    .video {
+        display: block !important;
+        float: left;
+        margin-right: 10px;
+    }
+
+    #grid {
+        column-width: auto !important;
+    }
+
+    /* The playlistcontrols overlaps. This makes them fit */
+    #playlistcontrols .btn-default {
+        padding-left:  14px;
+        padding-right: 14px;
+    }
+
+}
