@@ -88,7 +88,7 @@
 			<button class="btn btn-default dropdown-toggle" id="drpdownSearchMenu" data-toggle="dropdown">
 				<span class="caret"></span>
 			</button>
-			<ul class="dropdown-menu" id="dropdownMenu">
+			<ul class="dropdown-menu pull-right" id="dropdownMenu">
 				<li><a href="#" id="btnFavorites">User Favorites</a></li>
 				<li><a href="#" id="btnUploads">User Uploads</a></li>
 				<li class="divider"></li>
