@@ -125,7 +125,7 @@ HTML;
 			<a href=\"yt.php?action=".qs('action')
 	         .'&q='.qs('q').'&user='.qs('user').'&id='.qs('id')
 	         .'&feed='.qs('feed')."\">
-                <img class=\"loadmoreimg\" src=\"more.png\" width=\"62\" height=\"62\" /><br />Load more
+                <img class=\"loadmoreimg\" src=\"/assets/images/more.png\" width=\"62\" height=\"62\" /><br />Load more
 		    </a>
 	    </div>";
 
