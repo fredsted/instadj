@@ -49,10 +49,7 @@ $(function () {
     }
 
 
-    $("#smallogo, #txtSearch").tooltip({placement: 'bottom'});
-    setTimeout(function(){
-	$(".tooltip").fadeOut('slow');
-    }, 3000);
+    $("#smallogo").tooltip({placement: 'bottom'});
 
     var subreddits = [
 	'futuregarage',
@@ -184,8 +181,6 @@ $(function () {
     });
 
     $("#btnSearch").click(function () {
-	$("#txtSearch").tooltip("disable");
-
 	if ($('#txtSearch').attr('value') == '') {
 	    $('#txtSearch').attr('placeholder', 'Enter song or artist…');
 	    $('#txtSearch').focus();
@@ -208,9 +203,6 @@ $(function () {
     });
 
     $("#txtSearch").keypress(function (e) {
-	// Force remove tooltip
-	$(".tooltip").remove();
-
 	//Enter key
 	if (e.which == 13) {
 	    $("#btnSearch").click();

@@ -77,7 +77,7 @@
 
 		<div id="txtSearchwrapper">
 			<input type="search" id="txtSearch" class="search-query form-control"
-			       rel="tooltip" title="Search and add videos to playlist" placeholder="YouTube Search…"/>
+			       title="Search and add videos to playlist" placeholder="YouTube Search…"/>
 
 		</div>
 
