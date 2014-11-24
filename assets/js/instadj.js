@@ -50,6 +50,9 @@ $(function () {
 
 
     $("#smallogo, #txtSearch").tooltip({placement: 'bottom'});
+    setTimeout(function(){
+	$(".tooltip").fadeOut('slow');
+    }, 3000);
 
     var subreddits = [
 	'futuregarage',
