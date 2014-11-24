@@ -23,13 +23,17 @@ body {
     position: absolute;
 }
 
-#txtSearch {
-    width: auto;
-    float: left;
+#txtSearchwrapper {
+    position: absolute;
     left: 405px;
     right: 120px;
-    position: absolute;
+}
+
+#txtSearch {
+
     margin-right: 5px;
+    width:100%;
+    box-sizing:border-box;
 }
 
 #txtSearch.loading {

@@ -81,7 +81,11 @@
 		<a href="./" class="logo-sm"><img src="assets/images/instadj.png" id="smallogo"
 		                                  title="Create &amp; Share YouTube Playlists with InstaDJ"/></a>
 
-		<input type="search" id="txtSearch" class="form-control search-query" placeholder="YouTube Search…"/>
+		<div id="txtSearchwrapper">
+			<input type="search" id="txtSearch" class="search-query form-control"
+			       rel="tooltip" title="Search for YouTube songs to put in your playlist" placeholder="YouTube Search…"/>
+
+		</div>
 
 		<div id="btngrpSearch" class="btn-group">
 			<button class="btn btn-primary" id="btnSearch"><i class="glyphicon  glyphicon-search glyphicon-white"></i>
