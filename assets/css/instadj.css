@@ -100,7 +100,7 @@ body {
 #player {
     /* "Click to play" text */
     text-align: center;
-    line-height: 250px;
+    line-height: 210px;
     color: #DDD;
     font-weight: bolder;
     font-size: 24px;
@@ -110,6 +110,7 @@ body {
     height: 220px;
     width: 390px;
     margin-bottom: 5px;
+    background: url(/assets/images/notaplayer.png);
 }
 
 #playlistcontrols {
