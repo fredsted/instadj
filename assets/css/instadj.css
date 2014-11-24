@@ -188,9 +188,6 @@ body {
 
 #grid {
     font-size: 13px;
-    overflow-y: auto;
-
-    height: auto;
 
     -webkit-column-width: 166px; /* Chrome, Safari, Opera */
     -moz-column-width: 166px; /* Firefox */
@@ -211,6 +208,8 @@ body {
     -o-column-break-inside:avoid;
     -ms-column-break-inside:avoid;
     column-break-inside:avoid;
+    break-before: avoid;
+    display: table;
 }
 
 .title {
