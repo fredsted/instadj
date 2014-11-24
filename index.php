@@ -13,12 +13,6 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/instadj.css">
 
-	<style type="text/css">
-		.hidden {
-			display: none;
-		}
-	</style>
-
 	<meta name="description"
 	      content="With InstaDJ you can create and share playlists with ease. It's great for parties or just queueing up videos."/>
 	<meta charset="utf-8"/>
@@ -36,7 +30,7 @@
 		<button class="btn btn-success" id="btnGenerate" disabled="disabled"><i
 				class="glyphicon glyphicon-envelope glyphicon-white"></i> Share/Save
 		</button>
-		<div id="sharingoptions" class="hidden">
+		<div id="sharingoptions" style="display:none">
 			<div id="sharethisbuttons" style="float:left;">
 				<div id="sbtn001">
 					<a href="" target="_blank">
