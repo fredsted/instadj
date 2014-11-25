@@ -13,9 +13,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 (function ($) {
-
     $.fn.shuffle = function () {
-
 	var allElems = this.get(),
 	    getRandom = function (max) {
 		return Math.floor(Math.random() * max);
@@ -32,9 +30,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 	});
 
 	return $(shuffled);
-
     };
-
 })(jQuery);
 
 // On Document Load
@@ -79,7 +75,6 @@ $(function () {
 
     });
 
-
     $("#playlistcontent").dragsort({
 	dragSelector: "li",
 	dragEnd: function () {
@@ -89,7 +84,6 @@ $(function () {
 	scrollContainer: "#playlist",
 	scrollSpeed: "10"
     });
-
 
     $("#dropdownMenu").on("click", ".btnReddit", function (e) {
 	loadRedditPlaylist($(this).attr('data-playlist'));
@@ -475,7 +469,7 @@ function addtoplaylist(id, title, noscroll) {
 
     $('#btnGenerate').show().removeAttr('disabled');
 
-    $('#playlistcontent').append($('<li class="' + activehtml + '"><a class="playlistitem" href="#" data-id="' + id + '">' + title + '</a><button class="btn btn-xs playlistremove"><i class="glyphicon-minus"></i></button></li>').hide().fadeIn());
+    $('#playlistcontent').append($('<li class="' + activehtml + '"><a class="playlistitem" href="#" data-id="' + id + '">' + title + '</a><button class="btn btn-xs btn-danger playlistremove"><i class="glyphicon-minus"></i></button></li>').hide().fadeIn());
 
     if (!(noscroll == true)) {
 	$('#playlist').scrollTo($('#playlist ul').children().last(), {duration: 500});
