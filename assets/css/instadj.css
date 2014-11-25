@@ -175,8 +175,8 @@ body {
 }
 
 
-/* ####### GRID */
-#gridcontainer {
+
+#grid {
     overflow-x: hidden;
     overflow-y: scroll;
 
@@ -185,14 +185,11 @@ body {
     left: 415px;
     bottom: 10px;
     right: 10px;
-}
 
-#grid {
-    font-size: 13px;
-
-    -webkit-column-width: 166px; /* Chrome, Safari, Opera */
-    -moz-column-width: 166px; /* Firefox */
-    column-width: 166px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .video {
@@ -203,13 +200,8 @@ body {
     background-size: 166px 125px !important;
     background-repeat: no-repeat !important;
     background: #FFF;
-    -webkit-column-break-inside:avoid;
-    -moz-column-break-inside:avoid;
-    -o-column-break-inside:avoid;
-    -ms-column-break-inside:avoid;
-    column-break-inside:avoid;
-    break-before: avoid;
-    display: table;
+    margin-right: 20px;
+    float: left;
 }
 
 .title {
