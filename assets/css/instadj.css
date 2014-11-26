@@ -37,7 +37,7 @@ body {
 }
 
 #txtSearch.loading {
-    background: url(../images/miniloader.gif) no-repeat center right;
+    background: url(/assets/images/miniloader.gif) no-repeat center right;
     background-origin: content-box;
 }
 
