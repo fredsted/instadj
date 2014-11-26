@@ -145,29 +145,60 @@ body {
     padding: 0;
 }
 
-#playlistcontent li.active a {
-    color: #FFF;
+#playlistcontent li {
+    display: block;
+    overflow: hidden;
     text-overflow: ellipsis;
+    height: 40px;
+    padding-left: 2px;
+    margin-bottom: 4px;
+    border-radius: 3px;
+}
+
+#playlistcontent li:hover {
+    background: #DDD;
+}
+
+#playlistcontent li.active {
+    background: #CCC;
+
+}
+
+#playlistcontent li a:hover {
+    text-decoration: none;
 }
 
 #playlistcontent li a {
     overflow: hidden;
     white-space: nowrap;
-    float: left;
-    width: 379px;
+    width: 100%;
     height: 38px;
     text-overflow: ellipsis;
     font-size: 15px;
     padding: 4px;
-    color: #000;
+    color: #444;
     margin-bottom: 2px;
+    z-index: 100;
+    display: block;
+}
+
+.ui-state-highlight {
+    height: 38px;
+    background: #DDD;
+    border: 1px solid #CCC;
+    width:100%;
+    float: left;
 }
 
 .playlistremove {
-    float: right;
-    margin-top: 0px;
-    height: 38px;
-    display: none;
+    position: absolute;
+    right: 0;
+    margin-top: -30px;
+    margin-right: 15px;
+}
+
+#playlistcontent li:hover .playlistremove {
+    display: block;
 }
 
 .playlistimg {

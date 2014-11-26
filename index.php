@@ -8,7 +8,7 @@
 	</script>
 
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="assets/js/jquery.dragsort-0.5.1.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 	<script src="assets/js/instadj.js"></script>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/instadj.css">
@@ -59,7 +59,7 @@
 	</div>
 
 	<div id="playlist" class="well">
-		<ul class="nav nav-pills nav-stacked" id="playlistcontent"></ul>
+		<ul id="playlistcontent"></ul>
 	</div>
 
 	<div id="playlistcontrols">

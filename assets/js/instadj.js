@@ -75,15 +75,10 @@ $(function () {
 
     });
 
-    $("#playlistcontent").dragsort({
-	dragSelector: "li",
-	dragEnd: function () {
-	},
-	dragBetween: false,
-	placeHolderTemplate: "<li><b><a>[place video here]</a></b></li>",
-	scrollContainer: "#playlist",
-	scrollSpeed: "10"
+    $( "#playlistcontent" ).sortable({
+	placeholder: "ui-state-highlight"
     });
+    $( "#playlistcontent" ).disableSelection();
 
     $("#dropdownMenu").on("click", ".btnReddit", function (e) {
 	loadRedditPlaylist($(this).attr('data-playlist'));
@@ -145,12 +140,10 @@ $(function () {
 	});
 
     $('#playlistcontent').on("mouseenter", "li", function (e) {
-	$(this).children('.playlistremove').show();
-	$(this).children('.playlistitem').css({'width': '350px'});
+	$(this).children('.playlistremove').css('display', 'block');
     });
     $('#playlistcontent').on("mouseleave", "li", function (e) {
-	$(this).children('.playlistremove').hide();
-	$(this).children('.playlistitem').css({'width': '379px'});
+	$(this).children('.playlistremove').css('display', 'none');
     });
 
     $('#grid').on("click", ".related",
