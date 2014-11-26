@@ -96,7 +96,7 @@ $(function () {
     });
 
     $("#grid").on("click", ".loadmore", function (event) {
-	$('.loadmoreimg').attr('src', 'load.gif');
+	$('.loadmoreimg').attr('src', '/assets/images/load.gif');
 	scrolltothis = $('.loadmore').prev();
 	loadwhat = $('.loadmore').find('a').attr('href');
 	geturl = loadwhat + '&from=' + startfrom;
@@ -155,7 +155,7 @@ $(function () {
 
     $('#grid').on("click", ".related",
 	function () {
-	    $(this).children("a").html('<img src="miniloader.gif" />');
+	    $(this).children("a").html('<img src="/assets/images/miniloader.gif" />');
 	    geturl = $(this).children("a").attr("data-href");
 
 	    $.ajax({
