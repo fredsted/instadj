@@ -145,10 +145,6 @@ body {
     padding: 0;
 }
 
-#playlistcontent li {
-    height: 26px
-}
-
 #playlistcontent li.active a {
     color: #FFF;
     text-overflow: ellipsis;
@@ -159,9 +155,9 @@ body {
     white-space: nowrap;
     float: left;
     width: 379px;
-    height: 25px;
+    height: 38px;
     text-overflow: ellipsis;
-    font-size: 13px;
+    font-size: 15px;
     padding: 4px;
     color: #000;
     margin-bottom: 2px;
@@ -170,11 +166,13 @@ body {
 .playlistremove {
     float: right;
     margin-top: 0px;
-    height: 25px;
+    height: 38px;
     display: none;
 }
 
-
+.playlistimg {
+    padding-right: 5px;
+}
 
 #grid {
     overflow-x: hidden;

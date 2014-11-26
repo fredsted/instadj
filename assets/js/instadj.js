@@ -146,7 +146,7 @@ $(function () {
 
     $('#playlistcontent').on("mouseenter", "li", function (e) {
 	$(this).children('.playlistremove').show();
-	$(this).children('.playlistitem').css({'width': '355px'});
+	$(this).children('.playlistitem').css({'width': '350px'});
     });
     $('#playlistcontent').on("mouseleave", "li", function (e) {
 	$(this).children('.playlistremove').hide();
@@ -469,11 +469,16 @@ function addtoplaylist(id, title, noscroll) {
 
     $('#btnGenerate').show().removeAttr('disabled');
 
-    $('#playlistcontent').append($('<li class="' + activehtml + '"><a class="playlistitem" href="#" data-id="' + id + '">' + title + '</a><button class="btn btn-xs btn-danger playlistremove"><i class="glyphicon-minus"></i></button></li>').hide().fadeIn());
-
-    if (!(noscroll == true)) {
-	$('#playlist').scrollTo($('#playlist ul').children().last(), {duration: 500});
-    }
+    $('#playlistcontent').append(
+	$('<li class="' + activehtml + '">' +
+	'	<a class="playlistitem" href="#" data-id="' + id + '">' +
+	'	<img width="40" height="30" class="playlistimg" src="http://i.ytimg.com/vi/'+ id +'/1.jpg" />' +
+	'	' + title +
+	'	</a>' +
+	'	<button class="btn btn-xs btn-danger playlistremove">' +
+	'		<i class="glyphicon glyphicon-remove"></i>' +
+    	'	</button></li>'
+	).hide().fadeIn());
 }
 
 
