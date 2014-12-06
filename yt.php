@@ -132,7 +132,9 @@ HTML;
  
 
 } else {
-echo "No results!".readcache($queryURL);
+		echo <<<HTML
+<div class="video$class" style="background-image:url(/assets/images/noresults.png);"></div>
+HTML;
 }
 
 
