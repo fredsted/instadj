@@ -168,7 +168,7 @@ $(function () {
     });
 
     $("#btnSearch").click(function () {
-	if ($('#txtSearch').attr('value') == '') {
+	if ($('#txtSearch').val() == '') {
 	    $('#txtSearch').attr('placeholder', 'Enter song or artist…');
 	    $('#txtSearch').focus();
 	} else {
@@ -345,14 +345,14 @@ function onPlayerStateChange(event) {
 
 
 $(document).on("click", "#btnFavorites", function (event) {
-    if ($('#txtSearch').attr('value') == '') {
+    if ($('#txtSearch').val() == '') {
 	$('#txtSearch').attr('placeholder', 'Enter username…');
 	$('#txtSearch').focus();
     } else {
 	$("#txtSearch").addClass("loading");
 
 	$.ajax({
-	    url: 'yt.php?action=userfavorites&user=' + $('#txtSearch').attr('value'),
+	    url: 'yt.php?action=userfavorites&user=' + $('#txtSearch').val(),
 	    success: function (data) {
 		$('#grid').empty();
 		$('#grid').html(data);
@@ -367,7 +367,7 @@ $(document).on("click", "#btnFavorites", function (event) {
 
 $(document).on("click", "#btnUploads", function (event) {
 
-    if ($('#txtSearch').attr('value') == '') {
+    if ($('#txtSearch').val() == '') {
 	$('#txtSearch').attr('placeholder', 'Enter username…');
 	$('#txtSearch').focus();
     } else {
@@ -380,7 +380,7 @@ $(document).on("click", "#btnUploads", function (event) {
 	}
 
 	$.ajax({
-	    url: 'yt.php?action=useruploads&user=' + $('#txtSearch').attr('value'),
+	    url: 'yt.php?action=useruploads&user=' + $('#txtSearch').val(),
 	    success: function (data) {
 		$('#grid').empty();
 		$('#grid').html(data);
