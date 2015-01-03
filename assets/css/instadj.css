@@ -220,6 +220,10 @@ body {
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    -webkit-flex-direction: row;
+    -webkit-flex-wrap: wrap;
 }
 
 .video {
