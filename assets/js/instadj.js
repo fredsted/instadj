@@ -5,6 +5,7 @@ var gpfirst = true;
 var done = false;
 var startfrom = 51;
 var tempPlayerState;
+var ytapi = 'ytv3.php';
 
 // YouTube Api
 var tag = document.createElement('script');
@@ -174,7 +175,7 @@ $(function () {
     } else {
       $("#txtSearch").addClass("loading");
 
-      geturl = 'ytv3.php?action=search&q=' + $('#txtSearch').val();
+      geturl = ytapi + '?action=search&q=' + $('#txtSearch').val();
 
       $.ajax({
         url: geturl,
@@ -227,7 +228,7 @@ $(function () {
 
   $("#btnRelated").click(function () {
     $.ajax({
-      url: 'ytv3.php?action=related&id=' + currentID,
+      url: ytapi + '?action=related&id=' + currentID,
       success: function (data) {
         $('#grid').empty();
         $('#grid').html(data);
@@ -352,7 +353,7 @@ $(document).on("click", "#btnFavorites", function (event) {
     $("#txtSearch").addClass("loading");
 
     $.ajax({
-      url: 'ytv3.php?action=userfavorites&user=' + $('#txtSearch').val(),
+      url: ytapi + '?action=userfavorites&user=' + $('#txtSearch').val(),
       success: function (data) {
         $('#grid').empty();
         $('#grid').html(data);
@@ -380,7 +381,7 @@ $(document).on("click", "#btnUploads", function (event) {
     }
 
     $.ajax({
-      url: 'ytv3.php?action=useruploads&user=' + $('#txtSearch').val(),
+      url: ytapi + '?action=useruploads&user=' + $('#txtSearch').val(),
       success: function (data) {
         $('#grid').empty();
         $('#grid').html(data);
@@ -491,7 +492,7 @@ function loadRedditPlaylist(subreddit) {
         '<a href="http://www.youtube.com/watch?v=' + id + '" class="title"> ' + title + '</a>' +
         '<div class="playoverlay">&nbsp;</div>' +
         '<span class="related" style="display:none;">' +
-        '<a href="#" data-href="ytv3.php?action=related&id=' + id + '"><i class="glyphicon glyphicon-search"></i> Related</a></span></div>');
+        '<a href="#" data-href="' + ytapi + '?action=related&id=' + id + '"><i class="glyphicon glyphicon-search"></i> Related</a></span></div>');
 
       });
     }
