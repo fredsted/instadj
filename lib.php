@@ -16,6 +16,9 @@ function writecache($path, $URL) {
 	if (file_exists('./'.$path)) {
 		unlink('./'.$path);
 	}
+	if (!is_dir('./cache')) {
+		mkdir('./cache');
+	}
 	$fp = fopen('./'.$path, 'w+'); 
 	fwrite($fp, $data); 
 	fclose($fp);
