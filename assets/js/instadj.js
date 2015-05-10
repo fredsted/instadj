@@ -501,17 +501,15 @@ function loadRedditPlaylist(subreddit) {
 
 function getplaylist(id) {
   $.ajax({
+    dataType: 'json',
     url: 'store.php?action=get&id=' + id,
     success: function (data) {
-      if (data.indexOf("_instadjerr_") == -1) {
-        var jsonobject = JSON.parse(data, function (key, value) {
-          if (typeof(value) == 'string') {
-            addtoplaylist(key, value, true);
-          }
-
-        });
+      if (data.error == true) {
+        alert('Error when loading playlist "' + id + '": '+ data.code +'.\nPlease contact simon@fredsted.me or @fredsted on Twitter for assistance.');
       } else {
-        alert("error loading playlist, please contact instadj@fredsted.me");
+        for (var k in data) {
+          addtoplaylist(k, data[k], true);
+        }
       }
     }
   });
