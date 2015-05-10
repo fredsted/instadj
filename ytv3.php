@@ -24,45 +24,69 @@ if (isset($_GET['action'])) {
 $url = YT_API . $query . '&key=' . YT_KEY . '&maxResults=50';
 $result = json_decode(readcache($url));
 
-$class = ' ' . qs('class');
+//echo'<pre>';print_r($result);die();
 
-if (count($result->items > 0)) {
-	
-	foreach ($result->items as $video) {
-		$thumb		= $video->snippet->thumbnails->default->url;
-		$title		= $video->snippet->title;
-		$hd			= '';
-		$views		= '0';
-		$id			= $video->id->videoId;
-		$url		= "https://www.youtube.com/watch?v=" . $id;
+foreach ($result->items as $video) {
+	$videos[$video->id->videoId] = [
+		'title' => $video->snippet->title,
+		'thumb' => $video->snippet->thumbnails->high->url,
+		'url' => "https://www.youtube.com/watch?v=" . $video->id->videoId,
+	];
+}
 
-		
-		printvideo($class, $thumb, $url, $title, $hd, $views, $id);
+$vqUrl = YT_API . 'videos?part=contentDetails,statistics&id=' . implode(',', array_keys($videos)) . '&key=' . YT_KEY . '&maxResults=50';
+$vqRes = json_decode(readcache($vqUrl));
+
+foreach ($vqRes->items as $video) {
+	$videos[$video->id]['views'] = $video->statistics->viewCount;
+	$videos[$video->id]['hd'] = ($video->contentDetails->definition === 'hd' ? '1' : '0');
+	$videos[$video->id]['duration'] = gmdate('i:s', ytv3duration($video->contentDetails->duration));
+}
+
+if (count($videos) > 0) {
+	foreach ($videos as $videoId => $video) {
+		printvideo(
+			$video['thumb'],
+			$video['url'],
+			$video['title'],
+			$video['hd'],
+			$video['views'],
+			$videoId,
+			$video['duration']
+		);
 	}
 	
 	printloadmore();
-
 } else {
-	printnoresults($class);
+	printnoresults();
 }
 
 
 
-function printvideo($class, $thumb, $url, $title, $hd, $views, $id) {
+function printvideo($thumb, $url, $title, $hd, $views, $id, $duration) {
 	echo '
-		<div class="video'.$class.'" style="background-image:url('.$thumb.');">
-			<a href="'.$url.'" class="title"> '.$title.'</a>
-			'.$hd.'
+		<div class="video" style="background-image:url('.$thumb.');">
+			<a href="'.$url.'" class="title"> '.$title.'</a>';
+
+	if ($hd === '1') {
+		echo '<span class="hd">HD</span>';
+	}
+
+	echo '
+			<span class="duration">'. $duration .'</span>
 			<span class="videoinfo">'.$views.' views</span>
 			<div class="playoverlay">&nbsp;</div>
-			<span class="related" style="display:none;"><a href="#" data-href="yt.php?action=related&id='.$id.'"><i class="glyphicon glyphicon-search"></i> Related</a></span>
+			<span class="related" style="display:none;">
+				<a href="#" data-href="yt.php?action=related&id='.$id.'">
+				<i class="glyphicon glyphicon-search"></i> Related</a>
+			</span>
 		</div>
 	';
 }
 
 function printloadmore() {
     echo "<div class=\"loadmore\">
-		<a href=\"yt.php?action=".qs('action')
+		<a href=\"ytv3.php?action=".qs('action')
          .'&q='.qs('q').'&user='.qs('user').'&id='.qs('id')
          .'&feed='.qs('feed')."\">
             <img class=\"loadmoreimg\" src=\"/assets/images/more.png\" width=\"62\" height=\"62\" /><br />Load more
@@ -70,7 +94,7 @@ function printloadmore() {
     </div>";
 }
 
-function printnoresults($class)
+function printnoresults()
 {
-	echo '<div class="video'.$class.'" style="background-image:url(/assets/images/noresults.png);"></div>';
+	echo '<div class="video" style="background-image:url(/assets/images/noresults.png);"></div>';
 }

@@ -227,12 +227,14 @@ body {
 }
 
 .video {
-    width: 166px;
+    width: 223px;
     height: 185px;
     position: relative;
     cursor: pointer;
-    background-size: 166px 125px !important;
+    background-size: 223px 167px !important;
     background-repeat: no-repeat !important;
+    background-position-y: -22px !important;
+
     background: #FFF;
     margin-right: 20px;
     float: left;
@@ -240,9 +242,9 @@ body {
 
 .title {
     position: relative;
-    top: 125px;
+    top: 124px;
     height: 45px;
-    width: 166px;
+    width: 225px;
     font-weight: bold;
     float: left;
     font-size: 11px;
@@ -250,6 +252,7 @@ body {
     line-height: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
+    background: white;
 }
 
 .video a:hover {
@@ -257,10 +260,14 @@ body {
 }
 
 .playoverlay {
-    background: url(/assets/images/playoverlay.svg) no-repeat center center;
+    background: url(/assets/images/playoverlayplus.svg) no-repeat center center;
     display: none;
-    width: 166px;
-    height: 120px;
+    width: 220px;
+    height: 123px;
+}
+
+.first-time .playoverlay {
+    background: url(/assets/images/playoverlay.svg) no-repeat center center;
 }
 
 .hd {
@@ -281,6 +288,18 @@ body {
 .videoinfo {
     position: absolute;
     right: 5px;
+    font-size: 10px;
+    display: block !important;
+    text-align: right;
+    line-height: 10px;
+    top: 110px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+.duration {
+    position: absolute;
+    left: 5px;
     font-size: 10px;
     display: block !important;
     text-align: right;
