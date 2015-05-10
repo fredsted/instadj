@@ -17,7 +17,7 @@
 	      content="With InstaDJ you can create and share playlists with ease. It's great for parties or just queueing up videos."/>
 	<meta charset="utf-8"/>
 </head>
-<body>
+<body class="first-time">
 
 <div id="main">
 

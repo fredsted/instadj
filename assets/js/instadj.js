@@ -402,6 +402,7 @@ function playid(id, title) {
 
   if (first === true) {
     first = false;
+    $("body").removeClass('first-time');
 
     ytPlayer = new YT.Player('player', {
       height: '390px',
