@@ -47,17 +47,12 @@ ini_set( 'display_errors','0');
 	    switch ($action){
 	    	case "search":
 				$query = "videos?q=" . qs('q');
-				try {
+/*				try {
 					$db = new PDO('sqlite:searches.sqlite');
-					
 					$sql = "INSERT INTO searches (search, date) VALUES (:search, date('now'));";
-					
 					$sth = $db->prepare($sql);
-					
 					$savequery = trim(strtolower(qs('q')));
-					
 					$sth->execute(array(':search'=>substr($savequery, 0, 60)));
-									
 					$db = NULL;
 
 				}
@@ -65,7 +60,7 @@ ini_set( 'display_errors','0');
 				{
 					print 'Exception : '.$e->getMessage();
 				}
-				
+*/
 	    		break;
 	    	case "userfavorites":
 	    		$query = "users/" . qs('user','fredsted') . "/favorites?";

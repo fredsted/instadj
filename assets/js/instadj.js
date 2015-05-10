@@ -174,7 +174,7 @@ $(function () {
 	} else {
 	    $("#txtSearch").addClass("loading");
 
-	    geturl = 'yt.php?action=search&q=' + $('#txtSearch').val();
+	    geturl = 'ytv3.php?action=search&q=' + $('#txtSearch').val();
 
 	    $.ajax({
 		url: geturl,
@@ -227,7 +227,7 @@ $(function () {
 
     $("#btnRelated").click(function () {
 	$.ajax({
-	    url: 'yt.php?action=related&id=' + currentID,
+	    url: 'ytv3.php?action=related&id=' + currentID,
 	    success: function (data) {
 		$('#grid').empty();
 		$('#grid').html(data);
@@ -352,7 +352,7 @@ $(document).on("click", "#btnFavorites", function (event) {
 	$("#txtSearch").addClass("loading");
 
 	$.ajax({
-	    url: 'yt.php?action=userfavorites&user=' + $('#txtSearch').val(),
+	    url: 'ytv3.php?action=userfavorites&user=' + $('#txtSearch').val(),
 	    success: function (data) {
 		$('#grid').empty();
 		$('#grid').html(data);
@@ -380,7 +380,7 @@ $(document).on("click", "#btnUploads", function (event) {
 	}
 
 	$.ajax({
-	    url: 'yt.php?action=useruploads&user=' + $('#txtSearch').val(),
+	    url: 'ytv3.php?action=useruploads&user=' + $('#txtSearch').val(),
 	    success: function (data) {
 		$('#grid').empty();
 		$('#grid').html(data);
@@ -491,7 +491,7 @@ function loadRedditPlaylist(subreddit) {
 		'<a href="http://www.youtube.com/watch?v=' + id + '" class="title"> ' + title + '</a>' +
 		'<div class="playoverlay">&nbsp;</div>' +
 		'<span class="related" style="display:none;">' +
-		'<a href="#" data-href="yt.php?action=related&id=' + id + '"><i class="glyphicon glyphicon-search"></i> Related</a></span></div>');
+		'<a href="#" data-href="ytv3.php?action=related&id=' + id + '"><i class="glyphicon glyphicon-search"></i> Related</a></span></div>');
 
 	    });
 	}

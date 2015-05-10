@@ -7,3 +7,4 @@ reddit/cache/*
 icon/*
 database.db
 .idea
+config.php
