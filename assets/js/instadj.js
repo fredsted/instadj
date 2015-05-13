@@ -211,6 +211,7 @@ $(function () {
       );
       suggestCallBack = function (data) {
         var suggestions = [];
+        suggestions.push($("#txtSearch").val());
         $.each(data[1], function (key, val) {
           suggestions.push(val[0]);
         });
