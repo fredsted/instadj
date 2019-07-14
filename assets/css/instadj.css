@@ -1,0 +1,406 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    height: 100%;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+/* ####### MAIN */
+#main {
+    margin: 0px auto;
+    height: 100%;
+    font-size: 13px;
+}
+
+/* ####### SEARCH, LOGO */
+#controls {
+    height: 35px;
+    right: 10px;
+    top: 10px;
+    left: 10px;
+    margin: 0px;
+    width: auto;
+    position: absolute;
+}
+
+#txtSearchwrapper {
+    position: absolute;
+    left: 405px;
+    right: 120px;
+}
+
+#txtSearch {
+
+    margin-right: 5px;
+    width:100%;
+    box-sizing:border-box;
+}
+
+#txtSearch.loading {
+    background: white url(/assets/images/miniloader.gif) no-repeat center right;
+    background-origin: content-box;
+}
+
+.form-control:focus {
+  border-color: #e86666;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(232, 102, 102, 0.6);
+}
+
+#btnSearch {
+  background-color: red;
+  border: 1px solid red;
+}
+
+#btngrpSearch {
+    position: absolute;
+    right: 0px;
+}
+#facebook {
+    position: absolute;
+    left: 155px;
+    top: 7px;
+    width: 225px;
+}
+
+#smallogo {
+    position: absolute;
+    left: 0px;
+    top: 2px;
+}
+
+/* ####### SHARING */
+#btnGenerate {
+    float: right;
+    position: relative;
+    margin-top: 2px;
+}
+
+#playlistcode {
+  float: left;
+  position: relative;
+  width: 288px;
+  text-align: center;
+  cursor: text;
+  margin-left: 5px;
+  font-size: 12px;
+  padding-left: 0;
+  padding-right: 0;
+  /* margin-top: 2px; */
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #222;
+  height: 31px;
+}
+
+#sharingoptions div {
+    float: left
+}
+
+#share {
+    position: absolute;
+    bottom: 10px;
+    width: 390px;
+    left: 10px;
+}
+
+#sharethisbuttons {
+    height: 30px
+}
+
+/* ####### BLOCKS */
+#player {
+    /* "Click to play" text */
+    text-align: center;
+    line-height: 210px;
+    color: #DDD;
+    font-weight: bolder;
+    font-size: 24px;
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    height: 220px;
+    width: 390px;
+    margin-bottom: 5px;
+    background: url(/assets/images/notaplayer.png);
+}
+
+#playlistcontrols {
+    position: absolute;
+    top: 290px;
+    left: 10px;
+    height: 30px;
+    width: 390px;
+    margin: 0 auto;
+}
+
+#pauseplay {
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+#playlist {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 5px;
+    width: 390px;
+    position: absolute;
+    top: 340px;
+    left: 10px;
+    bottom: 55px;
+    margin: 0;
+}
+
+#playlistcontent {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#playlistcontent li {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 40px;
+    padding-left: 2px;
+    margin-bottom: 4px;
+    border-radius: 3px;
+}
+
+#playlistcontent li:hover {
+    background: #333;
+
+}
+
+#playlistcontent li.active {
+    background: red;
+}
+
+#playlistcontent li.active a {
+    color: white;
+}
+
+#playlistcontent li.active a:before {
+    content: "▶️";
+}
+
+#playlistcontent li a:hover {
+    text-decoration: none;
+    cursor: grab;
+}
+#playlistcontent li a:active {
+    cursor: grabbing;
+}
+
+#playlistcontent li a {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    height: 38px;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    padding: 4px;
+    color: #adabab;
+    margin-bottom: 2px;
+    z-index: 100;
+    display: block;
+    line-height: 33px;
+    vertical-align:middle;
+    padding-top: 2px;
+}
+
+.ui-state-highlight {
+    height: 38px;
+    background: #333232;
+    border: 1px solid #CCC;
+    width:100%;
+    float: left;
+}
+
+.playlistremove {
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-top: -30px;
+    margin-right: 15px;
+}
+
+#playlistcontent li:hover .playlistremove {
+    display: block;
+}
+
+.playlistimg {
+    padding-right: 5px;
+}
+
+#grid {
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    position: absolute;
+    top: 60px;
+    left: 415px;
+    bottom: 10px;
+    right: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    -webkit-flex-direction: row;
+    -webkit-flex-wrap: wrap;
+}
+
+.video {
+    width: 223px;
+    height: 185px;
+    position: relative;
+    cursor: pointer;
+    background-size: 223px 167px !important;
+    background-repeat: no-repeat !important;
+    background-position-y: -22px !important;
+
+    /*background: #FFF;*/
+    margin-right: 20px;
+    float: left;
+}
+
+a.title {
+    position: relative;
+    top: 124px;
+    height: 45px;
+    width: 225px;
+    font-weight: bold;
+    float: left;
+    font-size: 11px;
+    padding: 3px;
+    line-height: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: black;
+    color: #CCC;
+}
+
+.video a:hover {
+    text-decoration: none
+}
+
+.playoverlay {
+    background: url(/assets/images/playoverlayplus.svg) no-repeat center center;
+    display: none;
+    width: 220px;
+    height: 123px;
+}
+
+.first-time .playoverlay {
+    background: url(/assets/images/playoverlay.svg) no-repeat center center;
+}
+
+.hd {
+    background: #FF0000;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 9px;
+    color: white;
+    height: 13px;
+    line-height: 9px;
+    padding: 2px;
+    border-radius: 2px;
+    opacity: 0.7;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+.videoinfo {
+    position: absolute;
+    right: 5px;
+    font-size: 10px;
+    display: block !important;
+    text-align: right;
+    line-height: 10px;
+    top: 110px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+.duration {
+    position: absolute;
+    left: 5px;
+    font-size: 10px;
+    display: block !important;
+    text-align: right;
+    line-height: 10px;
+    top: 110px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+.related {
+    position: absolute;
+    top: 10px;
+    left: -3px;
+    padding: 0px 3px 0px 6px;
+    background: #FFF;
+    border-left: none;
+    border-radius: 4px;
+    color: black;
+    opacity: 0.6;
+}
+
+.related:hover {
+    opacity: 1.0;
+}
+
+.related a {
+    color: black;
+    font-size: 11px;
+}
+
+.loadmore {
+    margin-right: 20px;
+    float: left;
+    text-align: center;
+    width: 223px;
+    height: 185px;
+}
+
+.loadmore img {
+
+}
+
+.dropdown-menu label {
+    display: inline
+}
+
+/* ####### MISC */
+ul.nav {
+    margin: 0
+}
+
+#sbtn001 {
+    margin-right: 1px;
+}
+
+/* ####### IE FIXES */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+    /* IE 11 is really buggy with column content */
+    .video {
+        display: block !important;
+        float: left;
+        margin-right: 10px;
+    }
+
+    #grid {
+        column-width: auto !important;
+    }
+
+    /* The playlistcontrols overlaps. This makes them fit */
+    #playlistcontrols .btn-default {
+        padding-left:  14px;
+        padding-right: 14px;
+    }
+
+}
