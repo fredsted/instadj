@@ -3,7 +3,6 @@
 define('YT_API', 'https://www.googleapis.com/youtube/v3/');
 define('YT_KEY', 'FILL_ME_IN');
 
-define('PL_DIR', realpath('./playlists'));
-define('CUR_FILE', realpath('./playlists/.current'));
-define('CACHE_DIR', realpath('./cache'));
-
+define('PL_DIR', __DIR__ . '/playlists');
+define('CUR_FILE', __DIR__ . '/playlists/.current');
+define('CACHE_DIR', __DIR__ . '/cache');
