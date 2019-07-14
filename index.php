@@ -14,7 +14,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script src="assets/js/instadj.js"></script>
-    <link rel="stylesheet" href="https://bootswatch.com/3/cyborg/bootstrap.css">
+    <link rel="stylesheet" href="//bootswatch.com/3/cyborg/bootstrap.css">
     <link rel="stylesheet" href="assets/css/instadj.css">
 
     <meta name="description"

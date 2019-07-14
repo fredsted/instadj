@@ -6,3 +6,7 @@ define('YT_KEY', 'FILL_ME_IN');
 define('PL_DIR', __DIR__ . '/playlists');
 define('CUR_FILE', __DIR__ . '/playlists/.current');
 define('CACHE_DIR', __DIR__ . '/cache');
+
+define('REDIS_HOST', '/tmp/redis.sock');
+define('REDIS_PORT', 6379);
+define('REDIS_PREFIX', 'instadj:');

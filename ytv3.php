@@ -3,37 +3,23 @@
 require('config.php');
 require('lib.php');
 
-function ytget($query)
-{
-    $url = YT_API . $query . '&key=' . YT_KEY . '&maxResults=50';
-    if (isset($_GET['next_page'])) {
-        $url .= '&pageToken=' . ($_GET['next_page']);
-    }
-
-    $result = json_decode(readcache($url));
-    return $result;
-}
-
 function printvideo($thumb, $url, $title, $hd, $views, $id, $duration)
 {
-    echo '
-		<div class="video" style="background-image:url(' . $thumb . ');">
+    echo '<div class="video" style="background-image:url(' . $thumb . ');">
 			<a href="' . $url . '" class="title"> ' . $title . '</a>';
 
     if ($hd === '1') {
         echo '<span class="hd">HD</span>';
     }
 
-    echo '
-			<span class="duration">' . $duration . '</span>
+    echo '<span class="duration">' . $duration . '</span>
 			<span class="videoinfo">' . $views . ' views</span>
 			<div class="playoverlay">&nbsp;</div>
 			<span class="related" style="display:none;">
 				<a href="#" data-href="ytv3.php?action=related&id=' . $id . '">
 				<i class="glyphicon glyphicon-search"></i> Related</a>
 			</span>
-		</div>
-	';
+		</div>';
 }
 
 function printloadmore($nextPageToken)
@@ -71,12 +57,12 @@ function getquery()
 
         case 'userfavorites':
             $query = 'channels?part=contentDetails&forUsername=' . qs('user');
-            $favoritesPlaylistId = ytget($query)->items[0]->contentDetails->relatedPlaylists->favorites;
+            $favoritesPlaylistId = ytGet($query)->items[0]->contentDetails->relatedPlaylists->favorites;
             return 'playlistItems?part=snippet&playlistId=' . $favoritesPlaylistId;
 
         case 'useruploads':
             $query = 'channels?part=contentDetails&forUsername=' . qs('user');
-            $favoritesPlaylistId = ytget($query)->items[0]->contentDetails->relatedPlaylists->uploads;
+            $favoritesPlaylistId = ytGet($query)->items[0]->contentDetails->relatedPlaylists->uploads;
             return 'playlistItems?part=snippet&playlistId=' . $favoritesPlaylistId;
 
         default:
@@ -86,10 +72,10 @@ function getquery()
 
 function getvideoinfo($videoids)
 {
-    return ytget('videos?part=contentDetails,statistics&id=' . implode(',', $videoids));
+    return ytGet('videos?part=contentDetails,statistics&id=' . implode(',', $videoids));
 }
 
-function printvideos($videos)
+function printvideos($result, $videos)
 {
     foreach ($videos as $videoId => $video) {
         printvideo(
@@ -103,14 +89,15 @@ function printvideos($videos)
         );
     }
 
-    if (isset($result->nextPageToken)) printloadmore($result->nextPageToken);
+    if (isset($result->nextPageToken))
+        printloadmore($result->nextPageToken);
 }
 
 
 $videos = [];
 
 // Get basic info about each video and collect in $videos array
-foreach (ytget(getquery())->items as $video) {
+foreach (ytGet(getquery())->items as $video) {
     $id = isset($video->id->videoId) ? $video->id->videoId : $video->id;
 
     $videos[$id] = [
@@ -120,15 +107,17 @@ foreach (ytget(getquery())->items as $video) {
     ];
 }
 
+$result = getvideoinfo(array_keys($videos));
+
 // Embellish videos with views, hd status and duration info
-foreach (getvideoinfo(array_keys($videos))->items as $video) {
+foreach ($result->items as $video) {
     $videos[$video->id]['views'] = $video->statistics->viewCount;
     $videos[$video->id]['hd'] = ($video->contentDetails->definition === 'hd' ? '1' : '0');
-    $videos[$video->id]['duration'] = gmdate('i:s', ytv3duration($video->contentDetails->duration));
+    $videos[$video->id]['duration'] = gmdate('i:s', ytDuration($video->contentDetails->duration));
 }
 
 if (empty($videos)) {
-    return printnoresults();
+    printnoresults();
+} else {
+    printvideos($result, $videos);
 }
-
-return printvideos($videos);
