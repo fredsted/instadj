@@ -5,7 +5,7 @@ function dump(...$items)
     foreach ($items as $item) {
         $lines = explode(PHP_EOL, print_r($item, true));
         echo '<details style="background-color: #CCC; padding: 5px">
-                <summary>'. $lines[0] . ($lines[1] ?? '') . '</summary>
+                <summary>'. $lines[0] . '</summary>
                 <pre>';
         print_r($item);
         echo '</pre></details>';
