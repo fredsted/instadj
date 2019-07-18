@@ -434,7 +434,7 @@ function addtoplaylist(id, title, duration, share, animate) {
         activehtml = ' active';
     }
 
-    var item = $('<li class="' + activehtml + '">' +
+    var item = $('<li class="' + activehtml + '" title="' + title + ' (' + duration + ')">' +
         '	<a class="playlistitem" href="#" data-id="' + id + '">' +
         '	<img width="40" height="30" class="playlistimg" src="https://i.ytimg.com/vi/' + id + '/1.jpg" />' +
         '	' + title + ' <span class="duration">(' + duration + ')</span>' +
