@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php include('lib.php') ?><!DOCTYPE html>
 <html>
 <head>
     <?php if (isset($_GET['id'])) { ?>
@@ -13,9 +13,9 @@
 
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script src="assets/js/instadj.js"></script>
+    <script src="assets/js/instadj.js?version=<?=getversion()?>"></script>
     <link rel="stylesheet" href="https://bootswatch.com/3/cyborg/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/instadj.css">
+    <link rel="stylesheet" href="assets/css/instadj.css?version=<?=getversion()?>">
 
     <meta name="description"
           content="With InstaDJ you can create and share playlists with ease. It's great for parties or just queueing up videos."/>

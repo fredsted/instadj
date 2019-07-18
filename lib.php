@@ -69,3 +69,12 @@ function ytv3duration($duration)
         }
     }
 }
+
+function getversion()
+{
+    $versionFile = __DIR__ . '/version.txt';
+    if (file_exists($versionFile)) {
+        return trim(file_get_contents($versionFile));
+    }
+    return 'unknown';
+}
