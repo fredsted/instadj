@@ -8,11 +8,11 @@
     <?php } ?>
 
     <script type="text/javascript">
-        var loadplaylist = '<?php echo(isset($_GET['id']) ? preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['id']) : '') ?>';
+        window.playlist = '<?php echo(isset($_GET['id']) ? preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['id']) : '') ?>';
     </script>
-
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="https://www.youtube.com/player_api"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script src="assets/js/instadj.js?version=<?=getversion()?>"></script>
     <link rel="stylesheet" href="https://bootswatch.com/3/cyborg/bootstrap.css">
     <link rel="stylesheet" href="assets/css/instadj.css?version=<?=getversion()?>">

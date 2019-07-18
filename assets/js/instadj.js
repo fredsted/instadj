@@ -1,18 +1,10 @@
 var first = true;
 var currentID;
 var currentState;
-var gpfirst = true;
-var done = false;
-var startfrom = 51;
+var start = 51;
 var tempPlayerState;
 var ytapi = 'ytv3.php';
 var store = window.localStorage;
-
-// YouTube Api
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/player_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 (function($) {
     $.fn.shuffle = function() {
@@ -37,14 +29,18 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // On Document Load
 $(function() {
-    if (loadplaylist != "") {
-        $("#intro").toggle();
-        setTimeout("getplaylist(loadplaylist); $('#controls').fadeIn();", 500);
-    } else if (store.getItem('currentPlaylist')) {
-        console.log('has item!');
-        $("#intro").toggle();
-        setTimeout("getplaylist(store.getItem('currentPlaylist')); $('#controls').fadeIn();", 500);
-    }
+    $(document).ready(function () {
+        if (window.playlist !== '') {
+            $("#intro").toggle();
+            getplaylist(loadplaylist);
+        } else if (store.getItem('currentPlaylist')) {
+            $("#intro").toggle();
+            getplaylist(store.getItem('currentPlaylist'));
+        }
+    });
+
+
+    $('#controls').fadeIn();
 
     loadRedditPlaylist('futurebeats');
 
@@ -102,7 +98,7 @@ $(function() {
         $('.loadmoreimg').attr('src', '/assets/images/load.gif');
         scrolltothis = $('.loadmore').prev();
         loadwhat = $('.loadmore').find('a').attr('href');
-        geturl = loadwhat + '&from=' + startfrom;
+        geturl = loadwhat + '&from=' + start;
 
         $.ajax({
             url: geturl,
@@ -113,7 +109,7 @@ $(function() {
             }
         });
 
-        startfrom = startfrom + 50;
+        start = start + 50;
         return false;
     });
 
@@ -122,7 +118,7 @@ $(function() {
         var title = $(this).children("a").text();
         var duration = $(this).children(".duration").text();
         $(this).children(".playoverlay").fadeOut('fast').fadeIn('fast');
-        addtoplaylist(id, title, duration, true);
+        addtoplaylist(id, title, duration, true, true);
         return false;
     });
 
@@ -419,7 +415,7 @@ function playid(id, title) {
  5 (video cued).
  */
 
-function addtoplaylist(id, title, duration, share) {
+function addtoplaylist(id, title, duration, share, animate) {
     activehtml = '';
     if (first == true) {
         activehtml = ' class="active"';
@@ -438,16 +434,21 @@ function addtoplaylist(id, title, duration, share) {
         activehtml = ' active';
     }
 
-    $('#playlistcontent').append(
-        $('<li class="' + activehtml + '">' +
-            '	<a class="playlistitem" href="#" data-id="' + id + '">' +
-            '	<img width="40" height="30" class="playlistimg" src="https://i.ytimg.com/vi/' + id + '/1.jpg" />' +
-            '	' + title + ' <span class="duration">(' + duration + ')</span>' +
-            '	</a>' +
-            '	<button class="btn btn-xs btn-danger playlistremove">' +
-            '		<i class="glyphicon glyphicon-remove"></i>' +
-            '	</button></li>'
-        ).hide().fadeIn());
+    var item = $('<li class="' + activehtml + '">' +
+        '	<a class="playlistitem" href="#" data-id="' + id + '">' +
+        '	<img width="40" height="30" class="playlistimg" src="https://i.ytimg.com/vi/' + id + '/1.jpg" />' +
+        '	' + title + ' <span class="duration">(' + duration + ')</span>' +
+        '	</a>' +
+        '	<button class="btn btn-xs btn-danger playlistremove">' +
+        '		<i class="glyphicon glyphicon-remove"></i>' +
+        '	</button></li>'
+    );
+
+    if (animate) {
+        $('#playlistcontent').append(item.hide().fadeIn());
+    } else {
+        $('#playlistcontent').append(item);
+    }
 
     if (share) {
         shareit();
@@ -532,7 +533,7 @@ function getplaylist(id) {
                 $("#playlistcode").attr("value", 'https://instadj.com/' + id);
                 $("#intro").toggle();
                 for (var k in data) {
-                    addtoplaylist(k, data[k]['title'], data[k]['duration'], false);
+                    addtoplaylist(k, data[k]['title'], data[k]['duration'], false, false);
                 }
             }
         }
