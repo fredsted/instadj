@@ -123,7 +123,7 @@ $(function() {
     });
 
     $(document).on("click", ".playlistitem", function(event) {
-        playid($(this).attr("data-id"), $(this).text());
+        playid($(this).attr("data-id"));
         //console.log($(this).attr("data-id"));
         $("#playlistcontent li").removeClass('active');
         $(this).parent().addClass('active');
@@ -375,7 +375,7 @@ $('li').click(function(event) {
     event.stopPropagation();
 });
 
-function playid(id, title) {
+function playid(id) {
     currentID = id;
 
     if (first === true) {
@@ -534,14 +534,10 @@ function getplaylist(id) {
                 for (var k in data) {
                     addtoplaylist(k, data[k]['title'], data[k]['duration'], false, false, false);
                 }
-                if (getCookie('item') !== null) {
-                    console.log('playing');
-                    console.log(getCookie('item'));
+                if (getCookie('item') !== '' && getCookie('item') !== null) {
                     playid(getCookie('item'));
                 } else {
-                    console.log(data[0]);
-                    console.log(data);
-                    playid(data[0]);
+                    playid(Object.keys(data)[0]);
                 }
             }
         }
