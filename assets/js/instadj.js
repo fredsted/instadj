@@ -32,7 +32,7 @@ $(function() {
     $(document).ready(function () {
         if (window.playlist !== '') {
             $("#intro").toggle();
-            getplaylist(loadplaylist);
+            getplaylist(window.playlist);
         } else if (store.getItem('currentPlaylist')) {
             $("#intro").toggle();
             getplaylist(store.getItem('currentPlaylist'));
