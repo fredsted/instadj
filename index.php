@@ -87,7 +87,7 @@
 
         <div id="txtSearchwrapper">
             <input type="search" id="txtSearch" class="search-query form-control"
-                   autofocus="autofocus"
+                   autofocus="autofocus" autocomplete="off"
                    title="Search and add videos to playlist" placeholder="YouTube Search…"/>
 
         </div>
@@ -137,7 +137,7 @@
 </script>
 
 <script src="assets/js/jquery.scrollTo.min.js"></script>
-<script src="assets/js/bootstrap3-typeahead.min.js"></script>
+<script src="assets/js/bootstrap3-typeahead-4.0.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 

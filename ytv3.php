@@ -6,10 +6,6 @@ require('lib.php');
 function ytget($query)
 {
     $url = YT_API . $query . '&key=' . YT_KEY . '&maxResults=50';
-    if (isset($_GET['next_page'])) {
-        $url .= '&pageToken=' . ($_GET['next_page']);
-    }
-
     $result = json_decode(readcache($url));
     return $result;
 }
@@ -61,7 +57,11 @@ function getquery()
                 if (!empty($matches)) return 'playlistItems?part=snippet&playlistId=' . $matches[1];
             }
 
-            return 'search?part=snippet&q=' . qs('q') . '&type=video';
+            $url = 'search?part=snippet&q=' . qs('q') . '&type=video';
+            if (isset($_GET['next_page'])) {
+                $url .= '&pageToken=' . ($_GET['next_page']);
+            }
+            return $url;
 
         case 'videoids':
             return 'videos?part=snippet&id=' . qs('ids') . '&maxResults=50';
@@ -86,10 +86,12 @@ function getquery()
 
 function getvideoinfo($videoids)
 {
-    return ytget('videos?part=contentDetails,statistics&id=' . implode(',', $videoids));
+    $url = 'videos?part=contentDetails,statistics&id=' . implode(',', $videoids);
+    $result = ytget($url);
+    return $result;
 }
 
-function printvideos($videos)
+function printvideos($videos, $results)
 {
     foreach ($videos as $videoId => $video) {
         printvideo(
@@ -103,14 +105,15 @@ function printvideos($videos)
         );
     }
 
-    if (isset($result->nextPageToken)) printloadmore($result->nextPageToken);
+    if (isset($results->nextPageToken)) printloadmore($results->nextPageToken);
 }
 
 
 $videos = [];
+$results = ytget(getquery());
 
 // Get basic info about each video and collect in $videos array
-foreach (ytget(getquery())->items as $video) {
+foreach ($results->items as $video) {
     $id = isset($video->id->videoId) ? $video->id->videoId : $video->id;
 
     $videos[$id] = [
@@ -119,10 +122,11 @@ foreach (ytget(getquery())->items as $video) {
         'url' => "https://www.youtube.com/watch?v=$id",
     ];
 }
+$videoInfo = getvideoinfo(array_keys($videos))->items;
 
 // Embellish videos with views, hd status and duration info
-foreach (getvideoinfo(array_keys($videos))->items as $video) {
-    $videos[$video->id]['views'] = $video->statistics->viewCount;
+foreach ($videoInfo as $video) {
+    $videos[$video->id]['views'] = $video->statistics->viewCount ?? 0;
     $videos[$video->id]['hd'] = ($video->contentDetails->definition === 'hd' ? '1' : '0');
     $videos[$video->id]['duration'] = ytv3duration($video->contentDetails->duration);
 }
@@ -131,4 +135,4 @@ if (empty($videos)) {
     return printnoresults();
 }
 
-return printvideos($videos);
+return printvideos($videos, $results);

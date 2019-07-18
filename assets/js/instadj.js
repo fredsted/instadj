@@ -228,7 +228,11 @@ $(function() {
         },
         minLength: 2,
         items: 10,
-        autoSelect: false
+        autoSelect: false,
+        afterSelect: function (something) {
+            $("#txtSearch").val(something);
+            $("#btnSearch").click();
+            },
     });
 
 

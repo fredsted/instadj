@@ -1,10 +1,15 @@
 <?php
 
-function dump($item)
+function dump(...$items)
 {
-    echo '<pre>';
-    print_r($item);
-    echo '</pre>';
+    foreach ($items as $item) {
+        $lines = explode(PHP_EOL, print_r($item, true));
+        echo '<details style="background-color: #CCC; padding: 5px">
+                <summary>'. $lines[0] . ($lines[1] ?? '') . '</summary>
+                <pre>';
+        print_r($item);
+        echo '</pre></details>';
+    }
 }
 
 function qs($which, $default = '')
@@ -76,5 +81,5 @@ function getversion()
     if (file_exists($versionFile)) {
         return substr(trim(file_get_contents($versionFile)), 0, 10);
     }
-    return 'unknown';
+    return time();
 }
