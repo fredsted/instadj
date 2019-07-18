@@ -302,7 +302,7 @@ a.title {
     overflow: hidden;
     text-overflow: ellipsis;
     background: black;
-    color: #a7a7a7;
+    color: #bebebe;
 }
 
 .video a:hover {
