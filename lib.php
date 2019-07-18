@@ -5,7 +5,7 @@ function dump(...$items)
     foreach ($items as $item) {
         $lines = explode(PHP_EOL, print_r($item, true));
         echo '<details style="background-color: #CCC; padding: 5px">
-                <summary>'. $lines[0] . '</summary>
+                <summary>' . $lines[0] . '</summary>
                 <pre>';
         print_r($item);
         echo '</pre></details>';
@@ -14,13 +14,11 @@ function dump(...$items)
 
 function qs($which, $default = '')
 {
-    if (isset($_GET[$which])) {
-        if ($_GET[$which] !== '') {
-            return urlencode($_GET[$which]);
-        } else {
-            return $default;
-        }
+    if (isset($_GET[$which]) && $_GET[$which] !== '') {
+        return urlencode($_GET[$which]);
     }
+
+    return $default;
 }
 
 function writecache($path, $URL)

@@ -58,30 +58,37 @@ function getquery()
             }
 
             $url = 'search?part=snippet&q=' . qs('q') . '&type=video';
-            if (isset($_GET['next_page'])) {
-                $url .= '&pageToken=' . ($_GET['next_page']);
-            }
-            return $url;
+            break;
 
         case 'videoids':
-            return 'videos?part=snippet&id=' . qs('ids') . '&maxResults=50';
+            $url = 'videos?part=snippet&id=' . qs('ids') . '&maxResults=50';
+            break;
 
         case 'related':
-            return 'search?part=snippet&relatedToVideoId=' . qs('id') . '&type=video';
+            $url = 'search?part=snippet&relatedToVideoId=' . qs('id') . '&type=video';
+            break;
 
         case 'userfavorites':
             $query = 'channels?part=contentDetails&forUsername=' . qs('user');
             $favoritesPlaylistId = ytget($query)->items[0]->contentDetails->relatedPlaylists->favorites;
-            return 'playlistItems?part=snippet&playlistId=' . $favoritesPlaylistId;
+            $url = 'playlistItems?part=snippet&playlistId=' . $favoritesPlaylistId;
+            break;
 
         case 'useruploads':
             $query = 'channels?part=contentDetails&forUsername=' . qs('user');
             $favoritesPlaylistId = ytget($query)->items[0]->contentDetails->relatedPlaylists->uploads;
-            return 'playlistItems?part=snippet&playlistId=' . $favoritesPlaylistId;
+            $url = 'playlistItems?part=snippet&playlistId=' . $favoritesPlaylistId;
+            break;
 
         default:
-            return 'videoCategories?part=snippet';
+            $url = 'videoCategories?part=snippet';
     }
+
+    if (isset($_GET['next_page'])) {
+        $url .= '&pageToken=' . (qs('next_page'));
+    }
+
+    return $url;
 }
 
 function getvideoinfo($videoids)
