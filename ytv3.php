@@ -126,7 +126,7 @@ $videoInfo = getvideoinfo(array_keys($videos))->items;
 
 // Embellish videos with views, hd status and duration info
 foreach ($videoInfo as $video) {
-    $videos[$video->id]['views'] = $video->statistics->viewCount ?? 0;
+    $videos[$video->id]['views'] = $video->statistics->viewCount;
     $videos[$video->id]['hd'] = ($video->contentDetails->definition === 'hd' ? '1' : '0');
     $videos[$video->id]['duration'] = ytv3duration($video->contentDetails->duration);
 }
