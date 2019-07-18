@@ -118,7 +118,7 @@ $(function() {
         var title = $(this).children("a").text();
         var duration = $(this).children(".duration").text();
         $(this).children(".playoverlay").fadeOut('fast').fadeIn('fast');
-        addtoplaylist(id, title, duration, true, true);
+        addtoplaylist(id, title, duration, true, true, true);
         return false;
     });
 
@@ -404,6 +404,11 @@ function playid(id, title) {
     } else {
         ytPlayer.loadVideoById(id, 0, 'large');
     }
+
+    $('li.active').removeClass("active");
+    $('#' + id).addClass('active');
+
+    setCookie('item', id);
 }
 
 /*
@@ -415,12 +420,7 @@ function playid(id, title) {
  5 (video cued).
  */
 
-function addtoplaylist(id, title, duration, share, animate) {
-    activehtml = '';
-    if (first == true) {
-        activehtml = ' class="active"';
-    }
-
+function addtoplaylist(id, title, duration, share, animate, playfirst) {
     // Play first added item
     try {
         tempPlayerState = ytPlayer.getPlayerState();
@@ -428,13 +428,7 @@ function addtoplaylist(id, title, duration, share, animate) {
         tempPlayerState = 9;
     }
 
-    if (($('#playlistcontent').children().length == 0) || (tempPlayerState == -1) || (tempPlayerState == 0)) {
-        playid(id, title);
-        $('li.active').removeClass("active");
-        activehtml = ' active';
-    }
-
-    var item = $('<li class="' + activehtml + '" title="' + title + ' (' + duration + ')">' +
+    var item = $('<li id="' + id + '" title="' + title + ' (' + duration + ')">' +
         '	<a class="playlistitem" href="#" data-id="' + id + '">' +
         '	<img width="40" height="30" class="playlistimg" src="https://i.ytimg.com/vi/' + id + '/1.jpg" />' +
         '	' + title + ' <span class="duration">(' + duration + ')</span>' +
@@ -452,6 +446,11 @@ function addtoplaylist(id, title, duration, share, animate) {
 
     if (share) {
         shareit();
+    }
+
+    if (playfirst && ($('#playlistcontent').children().length == 1) || (tempPlayerState == -1) || (tempPlayerState == 0)) {
+        console.log('playing '+id);
+        playid(id, title);
     }
 }
 
@@ -533,9 +532,49 @@ function getplaylist(id) {
                 $("#playlistcode").attr("value", 'https://instadj.com/' + id);
                 $("#intro").toggle();
                 for (var k in data) {
-                    addtoplaylist(k, data[k]['title'], data[k]['duration'], false, false);
+                    addtoplaylist(k, data[k]['title'], data[k]['duration'], false, false, false);
+                }
+                if (getCookie('item') !== null) {
+                    console.log('playing');
+                    console.log(getCookie('item'));
+                    playid(getCookie('item'));
+                } else {
+                    console.log(data[0]);
+                    console.log(data);
+                    playid(data[0]);
                 }
             }
         }
     });
+}
+
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+if (typeof window.localStorage.currentPlaylist === 'undefined'
+    && getCookie('currentPlaylist') !== null) {
+    window.localStorage.currentPlaylist = getCookie('currentPlaylist');
+}
+
+if (typeof window.localStorage.currentPlaylist === 'string'
+    && getCookie('currentPlaylist') === null) {
+    setCookie('currentPlaylist', window.localStorage.currentPlaylist);
 }
