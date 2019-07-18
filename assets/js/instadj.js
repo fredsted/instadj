@@ -146,15 +146,19 @@ $(function() {
 
     $('#playlistcontent').on("mouseenter", "li", function(e) {
         $(this).children('.playlistremove').css('display', 'block');
+        $(this).children('.related').css('display', 'block');
     });
     $('#playlistcontent').on("mouseleave", "li", function(e) {
         $(this).children('.playlistremove').css('display', 'none');
+        $(this).children('.related').css('display', 'none');
     });
 
-    $('#grid').on("click", ".related",
+    $('#grid,#playlistcontent').on("click", ".related",
         function() {
-            $(this).children("a").html('<img src="/assets/images/miniloader.gif" />');
-            geturl = $(this).children("a").attr("data-href");
+            var that = this;
+            var htmlBefore = $(this).children("[data-href]").html();
+            $(this).children("[data-href]").html('<img src="/assets/images/miniloader.gif" />');
+            geturl = $(this).children("[data-href]").attr("data-href");
 
             $.ajax({
                 url: geturl,
@@ -163,6 +167,7 @@ $(function() {
                     $('#grid').scrollTo($('#grid').children().first(), {
                         duration: 500
                     });
+                    $(that).children("[data-href]").html(htmlBefore);
                 }
             });
 
@@ -428,14 +433,20 @@ function addtoplaylist(id, title, duration, share, animate, playfirst) {
         tempPlayerState = 9;
     }
 
-    var item = $('<li id="' + id + '" title="' + title + ' (' + duration + ')">' +
-        '	<a class="playlistitem" href="#" data-id="' + id + '">' +
-        '	<img width="40" height="30" class="playlistimg" src="https://i.ytimg.com/vi/' + id + '/1.jpg" />' +
-        '	' + title + ' <span class="duration">(' + duration + ')</span>' +
-        '	</a>' +
-        '	<button class="btn btn-xs btn-danger playlistremove">' +
-        '		<i class="glyphicon glyphicon-remove"></i>' +
-        '	</button></li>'
+    var item = $(
+        '<li id="' + id + '" title="' + title + ' (' + duration + ')">' +
+            '<a class="playlistitem" href="#" data-id="' + id + '">' +
+                '<img width="40" height="30" class="playlistimg" src="https://i.ytimg.com/vi/' + id + '/1.jpg" />' +
+                '' + title + ' <span class="duration">(' + duration + ')</span>' +
+            '</a>' +
+            '<button class="btn btn-xs btn-default related" style="display:none;">' +
+                '<span data-href="ytv3.php?action=related&id=' + id + '">' +
+                '<i class="glyphicon glyphicon-search"></i> Related</span>' +
+            '</button>' +
+            '<button class="btn btn-xs btn-danger playlistremove">' +
+                '<i class="glyphicon glyphicon-remove"></i>' +
+            '</button>' +
+        '</li>'
     );
 
     if (animate) {
@@ -531,8 +542,8 @@ function getplaylist(id) {
             } else {
                 $("#playlistcode").attr("value", 'https://instadj.com/' + id);
                 $("#intro").toggle();
-                for (var k in data) {
-                    addtoplaylist(k, data[k]['title'], data[k]['duration'], false, false, false);
+                for (var videoId in data) {
+                    addtoplaylist(videoId, data[videoId]['title'], data[videoId]['duration'], false, false, false);
                 }
                 if (getCookie('item') !== '' && getCookie('item') !== null) {
                     playid(getCookie('item'));
