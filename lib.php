@@ -58,13 +58,13 @@ function ytv3duration($duration)
 
             switch ($unite) {
                 case 'H':
-                    return substr($portion, 0, strlen($portion) - 1) * 60 * 60;
+                    return gmdate('i:s', substr($portion, 0, strlen($portion) - 1) * 60 * 60);
 
                 case 'M':
-                    return substr($portion, 0, strlen($portion) - 1) * 60;
+                    return gmdate('i:s', substr($portion, 0, strlen($portion) - 1) * 60);
 
                 default:
-                    return substr($portion, 0, strlen($portion) - 1);
+                    return gmdate('i:s', substr($portion, 0, strlen($portion) - 1));
             }
         }
     }

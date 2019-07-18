@@ -118,10 +118,11 @@ $(function() {
     });
 
     $(document).on("click", ".video", function(event) {
-        var video_id = $(this).children("a").attr("href").match(/v=(.{11})/)[1];
-        var video_title = $(this).children("a").text();
+        var id = $(this).children("a").attr("href").match(/v=(.{11})/)[1];
+        var title = $(this).children("a").text();
+        var duration = $(this).children(".duration").text();
         $(this).children(".playoverlay").fadeOut('fast').fadeIn('fast');
-        addtoplaylist(video_id, video_title, true);
+        addtoplaylist(id, title, duration, true);
         return false;
     });
 
@@ -414,13 +415,13 @@ function playid(id, title) {
  5 (video cued).
  */
 
-function addtoplaylist(id, title, share) {
+function addtoplaylist(id, title, duration, share) {
     activehtml = '';
     if (first == true) {
         activehtml = ' class="active"';
     }
-    // Play first added item
 
+    // Play first added item
     try {
         tempPlayerState = ytPlayer.getPlayerState();
     } catch (e) {
@@ -437,7 +438,7 @@ function addtoplaylist(id, title, share) {
         $('<li class="' + activehtml + '">' +
             '	<a class="playlistitem" href="#" data-id="' + id + '">' +
             '	<img width="40" height="30" class="playlistimg" src="https://i.ytimg.com/vi/' + id + '/1.jpg" />' +
-            '	' + title +
+            '	' + title + ' (' + duration + ')' +
             '	</a>' +
             '	<button class="btn btn-xs btn-danger playlistremove">' +
             '		<i class="glyphicon glyphicon-remove"></i>' +
@@ -527,7 +528,7 @@ function getplaylist(id) {
                 $("#playlistcode").attr("value", 'https://instadj.com/' + id);
                 $("#intro").toggle();
                 for (var k in data) {
-                    addtoplaylist(k, data[k], false);
+                    addtoplaylist(k, data[k]['title'], data[k]['duration'], false);
                 }
             }
         }

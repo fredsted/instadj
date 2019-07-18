@@ -55,7 +55,10 @@ if (isset($_GET['action'])) {
                     $response = [];
 
                     foreach ($vqRes->items as $video) {
-                        $response[$video->id] = $video->snippet->title;
+                        $response[$video->id] = [
+                            'title' => $video->snippet->title,
+                            'duration' => ytv3duration($video->contentDetails->duration),
+                        ];
                     }
 
                     echo json_encode($response);

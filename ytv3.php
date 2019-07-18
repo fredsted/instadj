@@ -124,7 +124,7 @@ foreach (ytget(getquery())->items as $video) {
 foreach (getvideoinfo(array_keys($videos))->items as $video) {
     $videos[$video->id]['views'] = $video->statistics->viewCount;
     $videos[$video->id]['hd'] = ($video->contentDetails->definition === 'hd' ? '1' : '0');
-    $videos[$video->id]['duration'] = gmdate('i:s', ytv3duration($video->contentDetails->duration));
+    $videos[$video->id]['duration'] = ytv3duration($video->contentDetails->duration);
 }
 
 if (empty($videos)) {
