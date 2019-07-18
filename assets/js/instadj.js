@@ -438,7 +438,7 @@ function addtoplaylist(id, title, duration, share) {
         $('<li class="' + activehtml + '">' +
             '	<a class="playlistitem" href="#" data-id="' + id + '">' +
             '	<img width="40" height="30" class="playlistimg" src="https://i.ytimg.com/vi/' + id + '/1.jpg" />' +
-            '	' + title + ' (' + duration + ')' +
+            '	' + title + ' <span class="duration">(' + duration + ')</span>' +
             '	</a>' +
             '	<button class="btn btn-xs btn-danger playlistremove">' +
             '		<i class="glyphicon glyphicon-remove"></i>' +

@@ -76,13 +76,19 @@ body {
     margin-top: 2px;
 }
 
+#playlistlinkText {
+    float: left;
+    padding-top: 7px;
+    padding-left: 20px;
+}
+
 #playlistcode {
   float: left;
   position: relative;
-  width: 288px;
+  width: 205px;
   text-align: center;
   cursor: text;
-  margin-left: 5px;
+  margin-left: 3px;
   font-size: 12px;
   padding-left: 0;
   padding-right: 0;
@@ -229,6 +235,10 @@ body {
     display: block;
 }
 
+.playlistitem .duration {
+    opacity: 0.5;
+}
+
 .playlistimg {
     padding-right: 5px;
 }
@@ -272,15 +282,15 @@ a.title {
     top: 124px;
     height: 45px;
     width: 225px;
-    font-weight: bold;
+    font-weight: normal;
     float: left;
-    font-size: 11px;
-    padding: 3px;
+    font-size: 12px;
+    padding: 5px;
     line-height: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
     background: black;
-    color: #CCC;
+    color: #a7a7a7;
 }
 
 .video a:hover {
@@ -325,7 +335,7 @@ a.title {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 }
 
-.duration {
+.video .duration {
     position: absolute;
     left: 5px;
     font-size: 10px;

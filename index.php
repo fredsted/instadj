@@ -58,6 +58,7 @@
                     </a>
                 </div>
             </div>
+            <span id="playlistlinkText">Playlist link</span>
             <input rel="tooltip" type="text" class="form-control"
                    id="playlistcode" readonly="readonly"
                    value="<?php echo(isset($_GET['id']) ? 'https://instadj.com/' . preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['id']) : '') ?>"
