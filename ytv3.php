@@ -12,24 +12,21 @@ function ytget($query)
 
 function printvideo($thumb, $url, $title, $hd, $views, $id, $duration)
 {
-    echo '
-		<div class="video" style="background-image:url(' . $thumb . ');">
-			<a href="' . $url . '" class="title"> ' . $title . '</a>';
+    echo '<div class="video" style="background-image:url(' . $thumb . ');">
+			<a href="' . $url . '" class="title">' . $title . '</a>';
 
     if ($hd === '1') {
         echo '<span class="hd">HD</span>';
     }
 
-    echo '
-			<span class="duration">' . $duration . '</span>
+    echo '<span class="duration">' . $duration . '</span>
 			<span class="videoinfo">' . $views . ' views</span>
 			<div class="playoverlay">&nbsp;</div>
 			<span class="related" style="display:none;">
 				<a href="#" data-href="ytv3.php?action=related&id=' . $id . '">
 				<i class="glyphicon glyphicon-search"></i> Related</a>
 			</span>
-		</div>
-	';
+		</div>';
 }
 
 function printloadmore($nextPageToken)
@@ -112,9 +109,9 @@ function printvideos($videos, $results)
         );
     }
 
-    if (isset($results->nextPageToken)) printloadmore($results->nextPageToken);
+    if (isset($results->nextPageToken))
+        printloadmore($results->nextPageToken);
 }
-
 
 $videos = [];
 $results = ytget(getquery());
