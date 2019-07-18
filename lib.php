@@ -52,8 +52,6 @@ function ytv3duration($duration)
 {
     preg_match_all('/[0-9]+[HMS]/', $duration, $matches);
 
-    $duration = 0;
-
     foreach ($matches as $match) {
         foreach ($match as $portion) {
             $unite = substr($portion, strlen($portion) - 1);
