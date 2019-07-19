@@ -432,10 +432,6 @@ function addtoplaylist(id, title, duration, share, animate, playfirst) {
 
     var item = $(
         '<li id="' + id + '" title="' + title + ' (' + duration + ')">' +
-            '<a class="playlistitem" href="#" data-id="' + id + '">' +
-                '<img width="40" height="30" class="playlistimg" src="https://i.ytimg.com/vi/' + id + '/1.jpg" />' +
-                '' + title + ' <span class="duration">(' + duration + ')</span>' +
-            '</a>' +
             '<button class="btn btn-xs btn-default related" style="display:none;">' +
                 '<span data-href="ytv3.php?action=related&id=' + id + '">' +
                 '<i class="glyphicon glyphicon-search"></i> Related</span>' +
@@ -443,6 +439,10 @@ function addtoplaylist(id, title, duration, share, animate, playfirst) {
             '<button class="btn btn-xs btn-danger playlistremove">' +
                 '<i class="glyphicon glyphicon-remove"></i>' +
             '</button>' +
+            '<a class="playlistitem" href="#" data-id="' + id + '">' +
+                '<img width="40" height="30" class="playlistimg" src="https://i.ytimg.com/vi/' + id + '/1.jpg" />' +
+                '' + title + ' <span class="duration">(' + duration + ')</span>' +
+            '</a>' +
         '</li>'
     );
 
