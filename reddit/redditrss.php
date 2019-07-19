@@ -1,4 +1,8 @@
 <?php
+require_once '../config.php';
+
+define('MAGPIE_CACHE_DIR', CACHE_DIR);
+
 header("Content-Type: text/plain");
 //header("Content-Type: application/xml; charset=ISO-8859-1"); 
 error_reporting(E_ALL);

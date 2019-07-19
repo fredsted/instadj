@@ -34,8 +34,8 @@ function writecache($path, $URL)
     if (file_exists('./' . $path)) {
         unlink('./' . $path);
     }
-    if (!is_dir('./cache')) {
-        mkdir('./cache');
+    if (!is_dir(CACHE_DIR)) {
+        mkdir(CACHE_DIR);
     }
     $fp = fopen('./' . $path, 'w+');
     fwrite($fp, $data);
@@ -44,7 +44,7 @@ function writecache($path, $URL)
 
 function readcache($URL)
 {
-    $filepath = 'cache/' . md5($URL) . '-v3.xml';
+    $filepath = CACHE_DIR . '/' . md5($URL) . '-v3.xml';
 
     if (file_exists($filepath)) {
         if (filemtime($filepath) < time() - 3600 * 24) {  // 24hrs
