@@ -37,9 +37,8 @@ function writecache($path, $URL)
     if (!is_dir(CACHE_DIR)) {
         mkdir(CACHE_DIR);
     }
-    $fp = fopen('./' . $path, 'w+');
-    fwrite($fp, $data);
-    fclose($fp);
+
+    file_put_contents($path, $data);
 }
 
 function readcache($URL)
