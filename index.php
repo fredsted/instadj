@@ -1,15 +1,13 @@
 <?php include('lib.php') ?><!DOCTYPE html>
 <html>
 <head>
-    <?php if (isset($_GET['id'])) { ?>
+    <?php if (getPlaylistId() !== '') { ?>
         <title>Check out my playlist on InstaDJ!</title>
     <?php } else { ?>
         <title>InstaDJ - Create &amp; Share YouTube Playlists</title>
     <?php } ?>
 
-    <script type="text/javascript">
-        window.playlist = '<?=getPlaylistId()?>';
-    </script>
+    <script type="text/javascript">window.playlist = '<?=getPlaylistId()?>';</script>
     <script src="https://www.youtube.com/player_api"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
@@ -63,7 +61,6 @@
                    id="playlistcode" readonly="readonly"
                    value="<?php echo(isset($_GET['id']) ? 'https://instadj.com/' . preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['id']) : '') ?>"
                    title="Playlist link. Share it!"/>
-
         </div>
     </div>
 
@@ -73,11 +70,16 @@
 
     <div id="playlistcontrols">
         <div class="btn-group" role="group">
-            <button class="btn btn-default" id="previous"><i class="glyphicon glyphicon-fast-backward"></i> Previous
-            </button>
-            <button class="btn btn-default" id="pauseplay"><i class="glyphicon glyphicon-pause"></i> Pause/Play</button>
-            <button class="btn btn-default" id="next"><i class="glyphicon glyphicon-fast-forward"></i> Next</button>
-            <button class="btn btn-default" id="shuffle"><i class="glyphicon glyphicon-random"></i> Shuffle</button>
+            <button class="btn btn-default" id="previous" style="padding:8px 10px">
+                <i class="glyphicon glyphicon-fast-backward"></i> Prev</button>
+            <button class="btn btn-default" id="pauseplay" style="padding:8px 11px">
+                <i class="glyphicon glyphicon-pause"></i> Pause/Play</button>
+            <button class="btn btn-default" id="next" style="padding:8px 10px">
+                <i class="glyphicon glyphicon-fast-forward"></i> Next</button>
+            <button class="btn btn-default" id="shuffle" style="padding:8px 7px">
+                <i class="glyphicon glyphicon-random"></i> Shuffle</button>
+            <button class="btn btn-default" id="clear" style="padding:8px 7px">
+                <i class="glyphicon glyphicon-erase"></i> Clear</button>
         </div>
     </div>
 

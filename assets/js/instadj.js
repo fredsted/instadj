@@ -2,7 +2,7 @@ var first = true;
 var currentID;
 var currentState;
 var start = 51;
-var tempPlayerState;
+var playState;
 var ytapi = 'ytv3.php';
 var store = window.localStorage;
 
@@ -284,6 +284,10 @@ $(function() {
         $('#playlist ul li').shuffle();
     });
 
+    $('#clear').click(function() {
+        $('#playlist ul li').remove();
+    });
+
 
     $('#txtSearch').focus();
 
@@ -377,6 +381,7 @@ $('li').click(function(event) {
 });
 
 function playid(id) {
+    console.log('Playing ' + id);
     currentID = id;
 
     if (first === true) {
@@ -422,11 +427,10 @@ function playid(id) {
  */
 
 function addtoplaylist(id, title, duration, share, animate, playfirst) {
-    // Play first added item
     try {
-        tempPlayerState = ytPlayer.getPlayerState();
+        playState = ytPlayer.getPlayerState();
     } catch (e) {
-        tempPlayerState = 9;
+        playState = 9;
     }
 
     var item = $(
@@ -455,8 +459,12 @@ function addtoplaylist(id, title, duration, share, animate, playfirst) {
         shareit();
     }
 
-    if (playfirst && ($('#playlistcontent').children().length == 1) || (tempPlayerState == -1) || (tempPlayerState == 0)) {
-        console.log('playing '+id);
+
+    var shouldPlay = playfirst
+        && playState !== 1
+        && (playState === -1 || playState === 0 || playState === 2 || playState === 9);
+
+    if (shouldPlay) {
         playid(id, title);
     }
 }
