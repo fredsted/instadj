@@ -47,9 +47,6 @@ $(function() {
     $("#smallogo").tooltip({
         placement: 'bottom'
     });
-    $("#playlistcode, #smallogo, img[rel=tooltip]").tooltip({
-        placement: 'top'
-    });
 
     var subreddits = [
         'futuregarage',

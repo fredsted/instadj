@@ -80,13 +80,14 @@ body {
 #playlistlinkText {
     float: left;
     padding-top: 7px;
-    padding-left: 20px;
+    padding-left: 5px;
+    padding-right: 10px;
 }
 
 #playlistcode {
     float: left;
     position: relative;
-    width: 150px;
+    width: 204px;
     text-align: center;
     cursor: text;
     margin-left: 3px;
@@ -94,6 +95,7 @@ body {
     padding-left: 0;
     padding-right: 0;
     /* margin-top: 2px; */
+    margin-right: 5px;
     font-weight: bold;
     margin-bottom: 0;
     color: #222;
@@ -185,10 +187,6 @@ body {
 
 #playlistcontent li.active a {
     color: white;
-}
-
-#playlistcontent li.active a:before {
-    content: "▶️ ";
 }
 
 #playlistcontent li a:hover {

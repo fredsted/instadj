@@ -36,6 +36,11 @@
 
     <div id="share">
         <div id="sharingoptions">
+            <span id="playlistlinkText">Playlist link</span>
+            <input type="text" class="form-control"
+                   id="playlistcode" readonly="readonly"
+                   value="<?php echo(isset($_GET['id']) ? 'https://instadj.com/' . preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['id']) : '') ?>"
+                   title="Playlist link. Share it!"/>
             <div id="sharethisbuttons" style="float:left;">
                 <div id="sbtn001">
                     <a href="" target="_blank">
@@ -56,11 +61,6 @@
                     </a>
                 </div>
             </div>
-            <span id="playlistlinkText">Playlist link</span>
-            <input rel="tooltip" type="text" class="form-control"
-                   id="playlistcode" readonly="readonly"
-                   value="<?php echo(isset($_GET['id']) ? 'https://instadj.com/' . preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['id']) : '') ?>"
-                   title="Playlist link. Share it!"/>
         </div>
     </div>
 
