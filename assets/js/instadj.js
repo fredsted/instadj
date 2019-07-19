@@ -222,23 +222,19 @@ $(function() {
                 var suggestions = [];
                 suggestions.push($("#txtSearch").val());
                 $.each(data[1], function(key, val) {
-                    suggestions.push(val[0]);
+                    if (suggestions.indexOf(val[0]) === -1)
+                        suggestions.push(val[0]);
                 });
                 response(suggestions);
             };
         },
-        minLength: 2,
-        items: 10,
+        minLength: 1,
+        items: 15,
         autoSelect: false,
         afterSelect: function (something) {
             $("#txtSearch").val(something);
             $("#btnSearch").click();
             },
-    });
-
-
-    $('#txtSearch').click(function() {
-        $(this).select();
     });
 
     $("#btnRelated").click(function() {

@@ -95,10 +95,10 @@ function printvideos($videos, $results)
             $video['thumb'],
             $video['url'],
             $video['title'],
-            $video['hd'],
-            $video['views'],
+            isset($video['hd']) ? $video['hd'] : '',
+            isset($video['views']) ? $video['views'] : '',
             $videoId,
-            $video['duration']
+            isset($video['duration']) ? $video['duration'] : ''
         );
     }
 
@@ -108,14 +108,19 @@ function printvideos($videos, $results)
 
 $videos = [];
 $results = ytget(getquery());
-
 // Get basic info about each video and collect in $videos array
 foreach ($results->items as $video) {
-    $id = isset($video->id->videoId) ? $video->id->videoId : $video->id;
+    $id = isset($video->snippet->resourceId->videoId)
+        ? $video->snippet->resourceId->videoId
+        : (isset($video->id->videoId)
+            ? $video->id->videoId
+            : $video->id);
 
     $videos[$id] = [
         'title' => $video->snippet->title,
-        'thumb' => $video->snippet->thumbnails->high->url,
+        'thumb' => isset($video->snippet->thumbnails->high->url)
+            ? $video->snippet->thumbnails->high->url
+            : '/assets/images/missing.png',
         'url' => "https://www.youtube.com/watch?v=$id",
     ];
 }
