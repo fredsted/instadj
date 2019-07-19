@@ -12,6 +12,12 @@ function dump(...$items)
     }
 }
 
+function dd(...$items)
+{
+    dump($items);
+    die();
+}
+
 function qs($which, $default = '')
 {
     if (isset($_GET[$which]) && $_GET[$which] !== '') {
@@ -71,6 +77,13 @@ function ytv3duration($duration)
             }
         }
     }
+}
+
+function ytget($query)
+{
+    $url = YT_API . $query . '&key=' . YT_KEY . '&maxResults=50';
+    $result = json_decode(readcache($url));
+    return $result;
 }
 
 function getversion()

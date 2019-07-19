@@ -45,20 +45,23 @@ if (isset($_GET['action'])) {
                 $filepath = PL_DIR . '/' . $id;
 
                 if (file_exists($filepath)) {
-                    $content = base64_decode(file_get_contents($filepath));
-                    $parsed = json_decode($content, true);
-                    $videos = array_keys($parsed);
-
-                    $vqUrl = YT_API . 'videos?part=contentDetails,statistics,id,snippet&id=' . implode(',', $videos) . '&key=' . YT_KEY . '&maxResults=50';
-                    $vqRes = json_decode(readcache($vqUrl));
-
+                    $videoIds = array_keys(json_decode(base64_decode(file_get_contents($filepath)), true));
+                    $chunks = array_chunk($videoIds, 50, true);
                     $response = [];
 
-                    foreach ($vqRes->items as $video) {
-                        $response[$video->id] = [
-                            'title' => $video->snippet->title,
-                            'duration' => ytv3duration($video->contentDetails->duration),
-                        ];
+                    foreach ($chunks as $videoIds) {
+                        $result = ytget('videos?part=contentDetails,statistics,id,snippet&id=' . implode(',', $videoIds));
+
+                        if (isset($result) && !empty($result->items) && is_array($result->items)) {
+                            foreach ($result->items as $video) {
+                                $response[$video->id] = [
+                                    'title' => $video->snippet->title,
+                                    'duration' => isset($video->contentDetails, $video->contentDetails->duration)
+                                        ? ytv3duration($video->contentDetails->duration)
+                                        : '',
+                                ];
+                            }
+                        }
                     }
 
                     echo json_encode($response);

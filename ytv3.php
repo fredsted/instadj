@@ -3,13 +3,6 @@
 require('config.php');
 require('lib.php');
 
-function ytget($query)
-{
-    $url = YT_API . $query . '&key=' . YT_KEY . '&maxResults=50';
-    $result = json_decode(readcache($url));
-    return $result;
-}
-
 function printvideo($thumb, $url, $title, $hd, $views, $id, $duration)
 {
     echo '<div class="video" style="background-image:url(' . $thumb . ');">
