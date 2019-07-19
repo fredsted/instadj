@@ -192,12 +192,12 @@ body {
 #playlistcontent li a:hover {
     text-decoration: none;
     cursor: grab;
-    width: 260px;
+    width: 265px;
 }
 
 #playlistcontent li .related:hover ~ .playlistitem,
 #playlistcontent li .playlistremove:hover ~ .playlistitem {
-    width: 260px;
+    width: 265px;
 }
 
 #playlistcontent li a:active {
