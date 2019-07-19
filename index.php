@@ -8,7 +8,7 @@
     <?php } ?>
 
     <script type="text/javascript">
-        window.playlist = '<?php echo(isset($_GET['id']) ? preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['id']) : '') ?>';
+        window.playlist = '<?=getPlaylistId()?>';
     </script>
     <script src="https://www.youtube.com/player_api"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>

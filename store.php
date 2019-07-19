@@ -1,5 +1,4 @@
 <?php
-require('base60.php');
 require('config.php');
 require('lib.php');
 
@@ -16,7 +15,7 @@ if (isset($_GET['action'])) {
     switch ($action) {
         case "store":
             $last_playlist_id = file_get_contents(CUR_FILE);
-            $next_playlist_id = base60encode(base60decode($last_playlist_id) + 1);
+            $next_playlist_id = base33encode(base33decode($last_playlist_id) + 1);
 
             if (isset($_POST["playlistdata"])) {
                 if (!file_exists(PL_DIR . '/' . $next_playlist_id)) {

@@ -94,3 +94,57 @@ function getversion()
     }
     return time();
 }
+
+function getPlaylistId()
+{
+    if (isset($_GET['id'])) {
+        return strtolower(preg_replace('/[^a-zA-Z0-9\s]/', '', $_GET['id']));
+    }
+
+    if (preg_match('/^(\/)([a-z0-9]+)$/', $_SERVER['REQUEST_URI'], $matches) === 1) {
+        if (isset($matches[2])) {
+            return $matches[2];
+        }
+    }
+    return '';
+}
+
+function base33encode($iInteger)
+{
+    $aMap = base33map();
+    $sString = '';
+    while ($iInteger > 0) {
+        $sString .= (string)$aMap[$iInteger % count($aMap)];
+        $iInteger = floor($iInteger / count($aMap));
+    }
+    return $sString;
+}
+
+function base33decode($sString)
+{
+    $aFlippedMap = array_flip(
+        base33map()
+    );
+    $iInteger = 0;
+    for ($iCurrentPosition = 0; $iCurrentPosition < strlen($sString); $iCurrentPosition++) {
+        $iInteger += $aFlippedMap[$sString[$iCurrentPosition]] * pow(count($aFlippedMap), $iCurrentPosition);
+    }
+    return $iInteger;
+}
+
+function base33map()
+{
+    return array(
+        'a', 'b', 'c',
+        'd', 'e', 'f',
+        'g', 'h', 'i',
+        'j', 'k', 'm',
+        'n', 'o', 'p',
+        'q', 'r', 's',
+        't', 'u', 'v',
+        'w', 'x', 'y',
+        'z', '2', '3',
+        '4', '5', '6',
+        '7', '8', '9',
+    );
+}

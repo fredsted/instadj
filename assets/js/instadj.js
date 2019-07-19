@@ -542,13 +542,27 @@ function getplaylist(id) {
             } else {
                 $("#playlistcode").attr("value", 'https://instadj.com/' + id);
                 $("#intro").toggle();
+
                 for (var videoId in data) {
-                    addtoplaylist(videoId, data[videoId]['title'], data[videoId]['duration'], false, false, false);
+                    if (data.hasOwnProperty(videoId)) {
+                        addtoplaylist(
+                            videoId,
+                            data[videoId]['title'],
+                            data[videoId]['duration'],
+                            false,
+                            false,
+                            false
+                        );
+                    }
                 }
-                if (getCookie('item') !== '' && getCookie('item') !== null) {
-                    playid(getCookie('item'));
+
+                var cookieId = getCookie('item');
+                var playlistIds = Object.keys(data);
+
+                if (cookieId && playlistIds.indexOf(cookieId) !== -1) {
+                    playid(cookieId);
                 } else {
-                    playid(Object.keys(data)[0]);
+                    playid(playlistIds[0]);
                 }
             }
         }
