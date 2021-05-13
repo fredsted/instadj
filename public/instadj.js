@@ -87,7 +87,12 @@ $(function() {
     }
 
     var keys = Object.keys(subreddits);
-    loadRedditPlaylist(keys[ keys.length * Math.random() << 0]);
+    if (store.getItem('reddit_current')) {
+        loadRedditPlaylist(store.getItem('reddit_current'));
+    } else {
+        loadRedditPlaylist(keys[ keys.length * Math.random() << 0]);
+    }
+
 
     $("#playlistcontent").sortable({
         placeholder: "ui-state-highlight",
@@ -598,7 +603,8 @@ function loadRedditPlaylist(subreddit) {
                     $('#grid').empty();
                     $('#grid').html(data);
                     $("#txtSearch").removeClass("loading");
-                    // $('#grid').scrollTo($('#grid').children().first(), {duration: 500});
+
+                    store.setItem('reddit_current', subreddit);
                 }
             });
         }
