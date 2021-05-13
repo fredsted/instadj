@@ -410,6 +410,7 @@ function playid(id) {
         $("body").removeClass('first-time');
 
         if ((typeof YT !== 'object') || (typeof YT.Player !== 'function')) {
+            console.log('YouTube library not loaded');
             setTimeout(function () { playid(id) }, 500);
             return;
         }
@@ -436,7 +437,8 @@ function playid(id) {
 
         $('#playlistcontrols').fadeIn('fast');
     } else {
-        if (typeof ytPlayer !== 'function') {
+        if (typeof ytPlayer == 'undefined') {
+            console.log('ytPlayer not loaded');
             setTimeout(function () { playid(id) }, 500);
             return;
         }
