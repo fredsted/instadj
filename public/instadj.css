@@ -350,28 +350,23 @@ a.title {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 }
 
-.videoinfo {
-    position: absolute;
+.views {
     right: 5px;
-    font-size: 10px;
-    display: block !important;
-    text-align: right;
-    line-height: 10px;
-    top: 110px;
-    color: #FFF;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 }
 
-.video .duration {
-    position: absolute;
+.duration {
     left: 5px;
-    font-size: 10px;
+}
+
+.videoinfo {
+    position: absolute;
+    font-size: 11px;
     display: block !important;
     text-align: right;
     line-height: 10px;
     top: 110px;
     color: #FFF;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+    text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
 }
 
 #grid .related {

@@ -12,11 +12,11 @@ function printvideo($thumb, $url, $title, $hd, $views, $id, $duration)
         echo '<span class="hd">HD</span>';
     }
 
-    echo '<span class="duration">' . $duration . '</span>';
+    echo '<span class="videoinfo duration">' . $duration . '</span>';
     
     if ($views != null)  {
 		echo '
-			<span class="videoinfo">' . $views . ' views</span>';    
+			<span class="videoinfo views">' . number_format_short($views) . ' views</span>';
     }
     echo '
 			<div class="playoverlay">&nbsp;</div>
