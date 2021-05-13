@@ -44,8 +44,6 @@ $(function() {
 
     $('#controls').fadeIn();
 
-    loadRedditPlaylist('futurebeats');
-
     $("#smallogo").tooltip({
         placement: 'bottom'
     });
@@ -54,33 +52,35 @@ $(function() {
         placement: 'top'
     });
 
-    var subreddits = [
-        'futuregarage',
-        'futurebeats',
-        'futurefunkairlines',
-        'dubstep',
-        'realdubstep',
-        'electronicmusic',
-        'idm',
-        'music',
-        'purplemusic',
-        'housemusic',
-        'listentothis',
-        'metal',
-        'indierock',
-        'jazz',
-        'hiphopheads',
-        'chillmusic',
-        'classicalmusic',
-        'trance',
-        'dnb',
-        'mashups'
-    ];
+    var subreddits = {
+        'futuregarage': 'Future Garage',
+        'futurebeats': 'Future Beats',
+        'dubstep': 'Dubstep',
+        'realdubstep': 'Real Dubstep',
+        'electronicmusic': 'Electronic Music',
+        'idm': 'IDM',
+        'music': 'Music',
+        'purplemusic': 'Purple Music',
+        'housemusic': 'House Music',
+        'listentothis': 'Listen To This',
+        'metal': 'Metal',
+        'indierock': 'Indie Rock',
+        'jazz': 'Jazz',
+        'hiphopheads': 'Hiphop Heads',
+        'chillmusic': 'Chill Music',
+        'classicalmusic': 'Classical',
+        'trance': 'Trance',
+        'dnb': 'Drum N Bass',
+        'mashups': 'Mashups',
+    };
 
-    $(subreddits).each(function(index) {
-        $("#dropdownMenu").append('<li><a href="#" class="btnReddit" data-playlist="' + subreddits[index] + '">/r/' + subreddits[index] + '</a></li>');
+    for (index in subreddits) {
+        $("#dropdownMenu").append('<li><a href="#" class="btnReddit" ' +
+            'data-playlist="' + index + '">' + subreddits[index] + '</a></li>');
+    }
 
-    });
+    var keys = Object.keys(subreddits);
+    loadRedditPlaylist(keys[ keys.length * Math.random() << 0]);
 
     $("#playlistcontent").sortable({
         placeholder: "ui-state-highlight",
