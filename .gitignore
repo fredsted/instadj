@@ -1,11 +1,3 @@
-searches.sqlite
-cache/*
-playlists/*
-pma/*
-stats/*
-reddit/cache/*
-icon/*
-database.db
-.idea
+current
 config.php
-version.txt
+LocalValetDriver.php

@@ -31,14 +31,13 @@ function writecache($path, $URL)
 {
     $data = file_get_contents($URL);
 
-    if (file_exists('./' . $path)) {
-        unlink('./' . $path);
-    }
     if (!is_dir(CACHE_DIR)) {
         mkdir(CACHE_DIR);
     }
 
     file_put_contents($path, $data);
+
+    return $data;
 }
 
 function readcache($URL)
@@ -58,24 +57,13 @@ function readcache($URL)
 
 function ytv3duration($duration)
 {
-    preg_match_all('/[0-9]+[HMS]/', $duration, $matches);
+    $start = new DateTime('@0'); // Unix epoch
+    $start->add(new DateInterval($duration));
 
-    foreach ($matches as $match) {
-        foreach ($match as $portion) {
-            $unite = substr($portion, strlen($portion) - 1);
-
-            switch ($unite) {
-                case 'H':
-                    return gmdate('i:s', substr($portion, 0, strlen($portion) - 1) * 60 * 60);
-
-                case 'M':
-                    return gmdate('i:s', substr($portion, 0, strlen($portion) - 1) * 60);
-
-                default:
-                    return gmdate('i:s', substr($portion, 0, strlen($portion) - 1));
-            }
-        }
+    if ($start->diff(new DateTime('@0'))->h > 0) {
+        return $start->format('H:i:s');
     }
+    return $start->format('i:s');
 }
 
 function ytget($query)
@@ -85,8 +73,12 @@ function ytget($query)
     return $result;
 }
 
-function getversion()
+function getversion(string $file = null)
 {
+	if (file_exists($file)) {
+		return md5_file($file);
+	}
+
     $versionFile = __DIR__ . '/version.txt';
     if (file_exists($versionFile)) {
         return substr(trim(file_get_contents($versionFile)), 0, 10);

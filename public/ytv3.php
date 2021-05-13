@@ -1,6 +1,6 @@
 <?php
 
-require('config.php');
+require('../config.php');
 require('lib.php');
 
 function printvideo($thumb, $url, $title, $hd, $views, $id, $duration)
@@ -12,8 +12,13 @@ function printvideo($thumb, $url, $title, $hd, $views, $id, $duration)
         echo '<span class="hd">HD</span>';
     }
 
-    echo '<span class="duration">' . $duration . '</span>
-			<span class="videoinfo">' . $views . ' views</span>
+    echo '<span class="duration">' . $duration . '</span>';
+    
+    if ($views != null)  {
+		echo '
+			<span class="videoinfo">' . $views . ' views</span>';    
+    }
+    echo '
 			<div class="playoverlay">&nbsp;</div>
 			<span class="related" style="display:none;">
 				<a href="#" data-href="ytv3.php?action=related&id=' . $id . '">
@@ -42,9 +47,12 @@ function getquery()
 {
     switch ($_GET['action']) {
         case 'search':
-            if (strpos(qs('q'), '%2Fplaylist%3Flist%3D') !== false) {
+            if (strpos(qs('q'), 'list%3D') !== false) {
                 preg_match('/list\%3D([a-zA-Z0-9_-]+)/s', qs('q'), $matches);
-                if (!empty($matches)) return 'playlistItems?part=snippet&playlistId=' . $matches[1];
+                if (!empty($matches)) {
+	                $url = 'playlistItems?part=snippet&playlistId=' . $matches[1];
+	                break;
+                }
             }
 
             $url = 'search?part=snippet&q=' . qs('q') . '&type=video';
@@ -107,6 +115,7 @@ function printvideos($videos, $results)
 }
 
 $videos = [];
+
 $results = ytget(getquery());
 // Get basic info about each video and collect in $videos array
 foreach ($results->items as $video) {

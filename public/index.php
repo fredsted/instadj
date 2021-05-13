@@ -1,19 +1,22 @@
 <?php include('lib.php') ?><!DOCTYPE html>
 <html>
 <head>
-    <?php if (getPlaylistId() !== '') { ?>
+	<?php if (getPlaylistId() !== '') { ?>
         <title>Check out my playlist on InstaDJ!</title>
-    <?php } else { ?>
+	<?php } else { ?>
         <title>InstaDJ - Create &amp; Share YouTube Playlists</title>
-    <?php } ?>
+	<?php } ?>
 
     <script type="text/javascript">window.playlist = '<?=getPlaylistId()?>';</script>
     <script src="https://www.youtube.com/player_api"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script src="assets/js/instadj.js?version=<?=getversion()?>"></script>
+    <script src="/instadj.js?version=<?= getversion('instadj.js') ?>"></script>
     <link rel="stylesheet" href="https://bootswatch.com/3/cyborg/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/instadj.css?version=<?=getversion()?>">
+    <link rel="stylesheet" href="instadj.css?version=<?= getversion('instadj.css') ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
 
     <meta name="description"
           content="With InstaDJ you can create and share playlists with ease. It's great for parties or just queueing up videos."/>
@@ -36,28 +39,40 @@
 
     <div id="share">
         <div id="sharingoptions">
-            <span id="playlistlinkText">Playlist link</span>
-            <input type="text" class="form-control"
-                   id="playlistcode" readonly="readonly"
-                   value="<?php echo(isset($_GET['id']) ? 'https://instadj.com/' . preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['id']) : '') ?>"
-                   title="Playlist link. Share it!"/>
-            <div id="sharethisbuttons" style="float:left;">
+            <div id="playlistmanagement">
+                <form class="form-inline">
+                    <button class="btn btn-default btn-sm" id="newplaylist" title="Create a new playlist">
+                        <i class="glyphicon glyphicon-plus"></i> New
+                    </button>
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm"
+                               id="playlistcode" readonly="readonly"
+                               title="Playlist link. Share it!"
+                               value="<?php echo(isset($_GET['id']) ? 'https://instadj.com/' . preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['id']) : '') ?>"
+                        />
+                        <span class="input-group-btn">
+                        <button class="btn btn-default btn-sm" id="copylink"><i class="glyphicon glyphicon-copy"></i> Copy</button>
+                    </span>
+                    </div>
+                </form>
+            </div>
+            <div id="sharethisbuttons">
                 <div id="sbtn001">
-                    <a href="" target="_blank">
-                        <img rel="tooltip" src="/assets/images/s001.png" width="32" height="32"
-                             title="Share this playlist!"/>
+                    <a href="#" target="_blank">
+                        <img rel="tooltip" src="/assets/images/shr_01.png"
+                             title="Share this playlist via Facebook"/>
                     </a>
                 </div>
                 <div id="sbtn002">
                     <a href="#" target="_blank">
-                        <img rel="tooltip" src="/assets/images/s002.png" width="32" height="32"
-                             title="Share this playlist!"/>
+                        <img rel="tooltip" src="/assets/images/shr_02.png"
+                             title="Share this playlist via Twitter"/>
                     </a>
                 </div>
                 <div id="stbtn3" title="Share this playlist!">
                     <a href="#" id="btnGenEmail">
-                        <img rel="tooltip" src="/assets/images/email_32.png" width="32" height="34"
-                             title="Share this playlist!"/>
+                        <img rel="tooltip" src="/assets/images/shr_00.png"
+                             title="Send an email with a link to this playlist"/>
                     </a>
                 </div>
             </div>
@@ -71,26 +86,32 @@
     <div id="playlistcontrols">
         <div class="btn-group" role="group">
             <button class="btn btn-default" id="previous" style="padding:8px 10px">
-                <i class="glyphicon glyphicon-fast-backward"></i> Prev</button>
+                <i class="glyphicon glyphicon-fast-backward"></i> Prev
+            </button>
             <button class="btn btn-default" id="pauseplay" style="padding:8px 11px">
-                <i class="glyphicon glyphicon-pause"></i> Pause/Play</button>
+                <i class="glyphicon glyphicon-pause"></i> Pause/Play
+            </button>
             <button class="btn btn-default" id="next" style="padding:8px 10px">
-                <i class="glyphicon glyphicon-fast-forward"></i> Next</button>
+                <i class="glyphicon glyphicon-fast-forward"></i> Next
+            </button>
             <button class="btn btn-default" id="shuffle" style="padding:8px 7px">
-                <i class="glyphicon glyphicon-random"></i> Shuffle</button>
+                <i class="glyphicon glyphicon-random"></i> Mix
+            </button>
             <button class="btn btn-default" id="clear" style="padding:8px 7px">
-                <i class="glyphicon glyphicon-erase"></i> Clear</button>
+                <i class="glyphicon glyphicon-erase"></i> Clear
+            </button>
         </div>
     </div>
 
     <div id="controls">
         <a href="./" class="logo-sm"><img src="assets/images/instadj-black.png" id="smallogo" height="27"
+                                          alt="InstaDJ"
                                           title="Create &amp; Share YouTube Playlists with InstaDJ"/></a>
 
         <div id="txtSearchwrapper">
             <input type="search" id="txtSearch" class="search-query form-control"
                    autofocus="autofocus" autocomplete="off"
-                   title="Search and add videos to playlist" placeholder="YouTube Search…"/>
+                   title="Search and add videos to playlist" placeholder="YouTube keywords or playlist URL"/>
 
         </div>
 
@@ -120,8 +141,6 @@
 
 <div id="grid"></div>
 
-<script src="assets/js/json2.js"></script>
-
 <!-- Analytics -->
 <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -137,10 +156,9 @@
         s.parentNode.insertBefore(ga, s);
     })();
 </script>
-
+<script src="assets/js/json2.js"></script>
 <script src="assets/js/jquery.scrollTo.min.js"></script>
 <script src="assets/js/bootstrap3-typeahead-4.0.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
+<script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>

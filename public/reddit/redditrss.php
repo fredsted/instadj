@@ -1,6 +1,5 @@
 <?php
-require_once '../config.php';
-
+require_once '../../config.php';
 define('MAGPIE_CACHE_DIR', CACHE_DIR);
 
 header("Content-Type: text/plain");

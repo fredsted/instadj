@@ -48,8 +48,8 @@ body {
 }
 
 #btnSearch {
-    background-color: red;
-    border: 1px solid red;
+    background-color: rgb(252, 64, 20);
+    border: 1px solid rgb(252, 64, 20);
 }
 
 #btngrpSearch {
@@ -71,41 +71,6 @@ body {
 }
 
 /* ####### SHARING */
-#btnGenerate {
-    float: right;
-    position: relative;
-    margin-top: 2px;
-}
-
-#playlistlinkText {
-    float: left;
-    padding-top: 7px;
-    padding-left: 5px;
-    padding-right: 10px;
-}
-
-#playlistcode {
-    float: left;
-    position: relative;
-    width: 204px;
-    text-align: center;
-    cursor: text;
-    margin-left: 3px;
-    font-size: 12px;
-    padding-left: 0;
-    padding-right: 0;
-    /* margin-top: 2px; */
-    margin-right: 5px;
-    font-weight: bold;
-    margin-bottom: 0;
-    color: #222;
-    height: 31px;
-}
-
-#sharingoptions div {
-    float: left
-}
-
 #share {
     position: absolute;
     bottom: 10px;
@@ -113,8 +78,46 @@ body {
     left: 10px;
 }
 
+#playlistmanagement {
+    width: 285px;
+    display: inline-block;
+}
+
+#newplaylist {
+    margin-right: 10px;
+}
+
+#playlistcode {
+    display: inline-block;
+    width: 140px;
+    height: 30px;
+    text-align: center;
+    background: inherit;
+    color: whitesmoke;
+    font-size: 12px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
 #sharethisbuttons {
-    height: 30px
+    height: 30px;
+    width: 100px;
+    float: right;
+    text-align: right;
+}
+
+#sharethisbuttons div {
+    display: inline-block;
+}
+
+#sharethisbuttons a img {
+    width: 30px;
+    height: 30px;
+    opacity: 0.5;
+}
+
+#sharethisbuttons a img:hover {
+    opacity: 0.9;
 }
 
 /* ####### BLOCKS */
@@ -137,7 +140,7 @@ body {
 #playlistcontrols {
     position: absolute;
     top: 290px;
-    left: 10px;
+    left: 20px;
     height: 30px;
     width: 390px;
     margin: 0 auto;
@@ -156,7 +159,7 @@ body {
     position: absolute;
     top: 337px;
     left: 10px;
-    bottom: 55px;
+    bottom: 50px;
     margin: 0;
 }
 
@@ -182,7 +185,7 @@ body {
 }
 
 #playlistcontent li.active {
-    background: red;
+    background: rgb(252, 64, 20);
 }
 
 #playlistcontent li.active a {
@@ -307,7 +310,7 @@ a.title {
     line-height: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
-    background: black;
+    background: #060606;
     color: #bebebe;
 }
 

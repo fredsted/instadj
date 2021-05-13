@@ -36,6 +36,8 @@ $(function() {
         } else if (store.getItem('currentPlaylist')) {
             $("#intro").toggle();
             getplaylist(store.getItem('currentPlaylist'));
+        } else {
+	        getplaylist(); // Create new playlist
         }
     });
 
@@ -46,6 +48,10 @@ $(function() {
 
     $("#smallogo").tooltip({
         placement: 'bottom'
+    });
+
+    $("#sbtn001 img, #sbtn002 img, #btnGenEmail img, #newplaylist").tooltip({
+        placement: 'top'
     });
 
     var subreddits = [
@@ -77,7 +83,8 @@ $(function() {
     });
 
     $("#playlistcontent").sortable({
-        placeholder: "ui-state-highlight"
+        placeholder: "ui-state-highlight",
+        stop: shareit,
     });
     $("#playlistcontent").disableSelection();
 
@@ -121,13 +128,13 @@ $(function() {
 
     $(document).on("click", ".playlistitem", function(event) {
         playid($(this).attr("data-id"));
-        //console.log($(this).attr("data-id"));
         $("#playlistcontent li").removeClass('active');
         $(this).parent().addClass('active');
     });
 
     $(document).on("click", ".playlistremove", function(event) {
         $(this).parent().remove();
+        shareit();
     });
 
     $('#grid').on("mouseenter", ".video",
@@ -183,7 +190,7 @@ $(function() {
         } else {
             $("#txtSearch").addClass("loading");
 
-            geturl = ytapi + '?action=search&q=' + $('#txtSearch').val();
+            geturl = ytapi + '?action=search&q=' + encodeURIComponent( $('#txtSearch').val() );
 
             $.ajax({
                 url: geturl,
@@ -285,10 +292,29 @@ $(function() {
         $('#playlist ul li').remove();
     });
 
-
     $('#txtSearch').focus();
 
+    $('#copylink').click(function (e) {
+        copyLink('playlistcode');
+        e.preventDefault();
+    })
+
+    $("#newplaylist").click(function (e) {
+        getplaylist(null, function () {
+            location.reload();
+        });
+        e.preventDefault();
+    });
 });
+
+function copyLink(inputId) {
+    var copyText = document.getElementById(inputId);
+
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+    document.execCommand("copy");
+}
 
 function onPlayerReady(event) {
     event.target.playVideo();
@@ -378,12 +404,17 @@ $('li').click(function(event) {
 });
 
 function playid(id) {
-    console.log('Playing ' + id);
     currentID = id;
 
     if (first === true) {
-        first = false;
         $("body").removeClass('first-time');
+
+        if ((typeof YT !== 'object') || (typeof YT.Player !== 'function')) {
+            setTimeout(function () { playid(id) }, 500);
+            return;
+        }
+
+        first = false;
 
         ytPlayer = new YT.Player('player', {
             height: '390px',
@@ -405,6 +436,11 @@ function playid(id) {
 
         $('#playlistcontrols').fadeIn('fast');
     } else {
+        if (typeof ytPlayer !== 'function') {
+            setTimeout(function () { playid(id) }, 500);
+            return;
+        }
+
         ytPlayer.loadVideoById(id, 0, 'large');
     }
 
@@ -456,7 +492,6 @@ function addtoplaylist(id, title, duration, share, animate, playfirst) {
         shareit();
     }
 
-
     var shouldPlay = playfirst
         && playState !== 1
         && (playState === -1 || playState === 0 || playState === 2 || playState === 9);
@@ -473,37 +508,57 @@ function shareit() {
         playlistarray[$(this).attr('data-id')] = $(this).text();
     });
 
-    playlistJSON = JSON.stringify(playlistarray);
-    console.log('playlistJSON', playlistJSON);
+    var playlistJSON = JSON.stringify(playlistarray);
+
+    var query = ''
+    var playlistId = store.getItem('currentPlaylist');
+    var playlistPassword = store.getItem('password_' + playlistId);
+    if (playlistId && playlistPassword) {
+        query = '&playlist_id=' + encodeURIComponent(playlistId) + '&playlist_password='
+            + encodeURIComponent(playlistPassword);
+    }
 
     $.ajax({
         type: 'POST',
-        url: '/store.php?action=store',
+        url: '/store.php?action=store' + query,
         data: 'playlistdata=' + escape(playlistJSON),
         success: function(data) {
-            $url = "https://instadj.com/" + data;
-
-            $("#playlistcode").attr("value", $url);
-
-            $("#sbtn001 a").attr("href",
-                "https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Finstadj.com%2F" + data);
-
-            $("#sbtn002 a").attr("href",
-                "https://www.twitter.com/intent/tweet?text=" +
-                "Check%20out%20my%20InstaDJ%20playlist." +
-                "&url=https://instadj.com/" + data);
-
-            $("#btnGenEmail").attr("href",
-                "mailto:?subject=Check out my playlist" +
-                "&body=Hi, I made a playlist and thou" +
-                "ght you might like it: " + $url);
-
-            store.setItem('currentPlaylist', data);
+            updateCurrentPlaylist(data.playlist_id, data.password);
         }
     });
 }
 
+function updateCurrentPlaylist(playlistId, playlistPassword)
+{
+    updateShareLinks(playlistId);
 
+    // Update current URL, if user came from a shared URL
+    history.pushState(null, document.title, '/' + playlistId);
+
+    store.setItem('currentPlaylist', playlistId);
+    if (playlistPassword) {
+        store.setItem('password_' + playlistId, playlistPassword);
+    }
+}
+
+function updateShareLinks(playlistId) {
+    var shareUrl = "https://instadj.com/" + playlistId;
+
+    $("#playlistcode").attr("value", shareUrl);
+
+    $("#sbtn001 a").attr("href",
+        "https://facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl));
+
+    $("#sbtn002 a").attr("href",
+        "https://www.twitter.com/intent/tweet?text=" +
+        "Check%20out%20my%20InstaDJ%20playlist." +
+        "&url=" + encodeURIComponent(shareUrl));
+
+    $("#btnGenEmail").attr("href",
+        "mailto:?subject=Check out my playlist" +
+        "&body=Hi, I made a playlist and thou" +
+        "ght you might like it: " + encodeURIComponent(shareUrl));
+}
 
 function loadRedditPlaylist(subreddit) {
     $("#txtSearch").addClass("loading");
@@ -532,10 +587,10 @@ function loadRedditPlaylist(subreddit) {
     });
 }
 
-function getplaylist(id) {
+function getplaylist(id, callback) {
     $.ajax({
         dataType: 'json',
-        url: 'store.php?action=get&id=' + id,
+        url: 'store.php?action=get&id=' + (id ? id : ''),
         success: function(data) {
             if (data.error) {
                 alert('Error when loading playlist "' + id + '": ' + data.code + '.'+
@@ -544,12 +599,12 @@ function getplaylist(id) {
                 $("#playlistcode").attr("value", 'https://instadj.com/' + id);
                 $("#intro").toggle();
 
-                for (var videoId in data) {
-                    if (data.hasOwnProperty(videoId)) {
+                for (var videoId in data.videos) {
+                    if (data.videos.hasOwnProperty(videoId)) {
                         addtoplaylist(
                             videoId,
-                            data[videoId]['title'],
-                            data[videoId]['duration'],
+                            data.videos[videoId]['title'],
+                            data.videos[videoId]['duration'],
                             false,
                             false,
                             false
@@ -558,12 +613,18 @@ function getplaylist(id) {
                 }
 
                 var cookieId = getCookie('item');
-                var playlistIds = Object.keys(data);
+                var playlistIds = Object.keys(data.videos);
 
                 if (cookieId && playlistIds.indexOf(cookieId) !== -1) {
                     playid(cookieId);
-                } else {
+                } else if (playlistIds.length > 0) {
                     playid(playlistIds[0]);
+                }
+
+                updateCurrentPlaylist(data.playlist_id, data.password);
+
+                if (callback) {
+                    callback(data.playlist_id);
                 }
             }
         }

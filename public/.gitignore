@@ -1,0 +1,11 @@
+searches.sqlite
+cache/*
+playlists/*
+pma/*
+stats/*
+reddit/cache/*
+icon/*
+database.db
+.idea
+config.php
+version.txt
