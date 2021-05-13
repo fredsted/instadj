@@ -192,6 +192,11 @@ body {
 
 #playlistcontent li.active {
     background: rgb(252, 64, 20);
+    font-weight: bold;
+}
+
+#playlistcontent li.active .duration {
+    font-weight: normal;
 }
 
 #playlistcontent li.active a {
