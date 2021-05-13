@@ -5,7 +5,7 @@ require('lib.php');
 
 function printvideo($thumb, $url, $title, $hd, $views, $id, $duration)
 {
-    echo '<div class="video" style="background-image:url(' . $thumb . ');">
+    echo '<div class="video" style="background-image:url(' . $thumb . ');" data-videoid="'. $id .'">
 			<a href="' . $url . '" class="title">' . $title . '</a>';
 
     if ($hd === '1') {

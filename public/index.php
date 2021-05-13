@@ -130,6 +130,10 @@
             </ul>
         </div>
 
+        <button class="btn btn-default" id="btnAddAll">
+            Add All
+        </button>
+
         <div id="facebook">
             <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Finstadjdotcom&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21"
                     scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;"

@@ -117,8 +117,8 @@ $(function() {
         return false;
     });
 
-    $(document).on("click", ".video", function(event) {
-        var id = $(this).children("a").attr("href").match(/v=(.{11})/)[1];
+    $(document).on('click', '.video', function(event) {
+        var id = $(this).data('videoid');
         var title = $(this).children("a").text();
         var duration = $(this).children(".duration").text();
         $(this).children(".playoverlay").fadeOut('fast').fadeIn('fast');
@@ -203,6 +203,22 @@ $(function() {
             });
 
         }
+    });
+
+    $('#btnAddAll').click(function (e) {
+        $('.video').each(function (index, item) {
+            addtoplaylist(
+                $(item).data('videoid'),
+                $(item).children('.title').text(),
+                $(item).children('.duration').text(),
+                false,
+                false
+            )
+        })
+
+        shareit();
+
+        e.preventDefault();
     });
 
     $("#txtSearch").keypress(function(e) {
