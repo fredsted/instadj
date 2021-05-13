@@ -173,3 +173,35 @@ function number_format_short( $n, $precision = 1 ) {
 
 	return $n_format . $suffix;
 }
+
+function extract_youtube_id($string)
+{
+	$did_match = preg_match("/youtube\.com\/watch\?v=(.{11})/", $string, $matches);
+	if ($did_match) return $matches[1];
+
+	$did_match = preg_match("/youtu\.be\/(.{11})/", $string, $matches);
+	if ($did_match) return $matches[1];
+
+	$did_match = preg_match("/youtube\.com\/embed\/(.{11})/", $string, $matches);
+	if ($did_match) return $matches[1];
+
+	return null;
+}
+
+function error($code, $message)
+{
+	http_response_code(500);
+	header('Content-Type: application/json');
+	echo json_encode([
+		'code' => $code,
+		'error' => $message,
+	]);
+	exit();
+}
+
+function resp_json(array $data)
+{
+	header('Content-Type: application/json');
+	echo json_encode($data);
+	exit();
+}

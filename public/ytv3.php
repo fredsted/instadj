@@ -117,6 +117,7 @@ function printvideos($videos, $results)
 $videos = [];
 
 $results = ytget(getquery());
+
 // Get basic info about each video and collect in $videos array
 foreach ($results->items as $video) {
     $id = isset($video->snippet->resourceId->videoId)

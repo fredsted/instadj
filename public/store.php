@@ -15,24 +15,6 @@ function next_playlist_id()
 	return base33encode(base33decode($last_playlist_id) + 1);
 }
 
-function error($code, $message)
-{
-	http_response_code(500);
-	header('Content-Type: application/json');
-	echo json_encode([
-		'code' => $code,
-		'error' => $message,
-	]);
-	exit();
-}
-
-function resp_json(array $data)
-{
-	header('Content-Type: application/json');
-	echo json_encode($data);
-	exit();
-}
-
 function sanitize_playlist_id(string $id)
 {
 	return preg_replace('/[^a-zA-Z0-9\s]/', '', $id);

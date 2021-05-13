@@ -72,6 +72,13 @@ $(function() {
         'trance': 'Trance',
         'dnb': 'Drum N Bass',
         'mashups': 'Mashups',
+        'mealtimevideos': 'Meal Time Videos',
+        'curiousvideos': 'Curious Videos',
+        'videos': 'Reddit Top Videos',
+        'documentaries': 'Documentaries',
+        'videoessay': 'Video Essays',
+        'artisanvideos': 'Artisan Videos',
+        'worldnewsvideo': 'World News Video',
     };
 
     for (index in subreddits) {
@@ -581,19 +588,12 @@ function updateShareLinks(playlistId) {
 function loadRedditPlaylist(subreddit) {
     $("#txtSearch").addClass("loading");
     $.ajax({
-        url: 'reddit/redditrss.php?reddit=' + subreddit,
+        url: 'reddit.php?reddit=' + subreddit,
         success: function(data) {
             $('#grid').empty();
-            var videoIds = [];
-            $(data).find('item').each(function() {
-                var id = $(this).children('a').text();
-                videoIds.push(id)
-            });
-
-            geturl = ytapi + '?action=videoids&ids=' + videoIds.join(',');
 
             $.ajax({
-                url: geturl,
+                url: ytapi + '?action=videoids&ids=' + data.youtube_ids.join(','),
                 success: function(data) {
                     $('#grid').empty();
                     $('#grid').html(data);
