@@ -5,7 +5,7 @@ require_once 'lib.php';
 //header("Content-Type: application/json");
 
 $subreddit = urlencode($_GET['reddit']);
-$url = "https://www.reddit.com/r/$subreddit.json?sort=new&restrict_sr=on&limit=100";
+$url = "https://www.reddit.com/r/$subreddit.json?sort=top&restrict_sr=on&limit=100&t=month";
 $data = json_decode(readcache($url), true);
 
 $youtubeIds = [];
