@@ -108,6 +108,12 @@
                                           alt="InstaDJ"
                                           title="Create &amp; Share YouTube Playlists with InstaDJ"/></a>
 
+        <div id="githubBtn">
+            <a class="github-button" href="https://github.com/fredsted/instadj"
+               data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star"
+               data-show-count="true" aria-label="Star fredsted/instadj on GitHub">Star</a>
+        </div>
+
         <div id="txtSearchwrapper">
             <input type="search" id="txtSearch" class="search-query form-control"
                    autofocus="autofocus" autocomplete="off"
@@ -133,12 +139,6 @@
         <button class="btn btn-default" id="btnAddAll">
             Add All
         </button>
-
-        <div id="facebook">
-            <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Finstadjdotcom&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21"
-                    scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;"
-                    allowTransparency="true"></iframe>
-        </div>
     </div>
 
 </div>
@@ -164,5 +164,6 @@
 <script src="assets/js/jquery.scrollTo.min.js"></script>
 <script src="assets/js/bootstrap3-typeahead-4.0.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
