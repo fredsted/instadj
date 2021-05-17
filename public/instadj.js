@@ -30,11 +30,10 @@ var store = window.localStorage;
 // On Document Load
 $(function() {
     $(document).ready(function () {
+        $('#intro').show();
         if (window.playlist !== '') {
-            $("#intro").toggle();
             getplaylist(window.playlist);
         } else if (store.getItem('currentPlaylist')) {
-            $("#intro").toggle();
             getplaylist(store.getItem('currentPlaylist'));
         } else {
 	        getplaylist(); // Create new playlist
@@ -626,7 +625,6 @@ function getplaylist(id, callback) {
                       '\nPlease contact simon@fredsted.me or @fredsted on Twitter for assistance.');
             } else {
                 $("#playlistcode").attr("value", 'https://instadj.com/' + id);
-                $("#intro").toggle();
 
                 for (var videoId in data.videos) {
                     if (data.videos.hasOwnProperty(videoId)) {
@@ -655,6 +653,8 @@ function getplaylist(id, callback) {
                 if (callback) {
                     callback(data.playlist_id);
                 }
+
+                $("#intro").hide();
             }
         }
     });
